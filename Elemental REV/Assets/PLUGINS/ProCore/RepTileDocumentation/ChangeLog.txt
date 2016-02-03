@@ -1,0 +1,21 @@
+Beta 1.0f
+Bug Fix: Tags saving to disk but not loading correctly. This was a wrong directory.
+Bug Fix: Tile placement cursors display incorrectly when grid size is not 1x1x1
+Bug Fix: Tiles display incorrectly in the Definition Editor when grid size is not 1x1x1 (set grid size through new "Tile Sets" tab)
+Bug Fix: Tiles spawn incorrectly when grid size is set to no 1x1x1 sise and tile scaling is not ture
+Bug Fix: Tile vertical anchoring is not correct.
+Bug Fix: Layout error was occuring when re-opening Unity after having closed it with the RepTile window open.
+Bug Fix: (Mac), some key combos not working.
+Bug Fix: (Mac), divide by zero error in definition palettes
+
+Feature: Keyboard shortcuts can now be customized in the "Settings" tab. They are stored in UserPrefs.
+Feature: Tile Sets now have their own tab, which allows you to customize presets for grid size and anchoring.
+Feature: The Tile Sets tab has controls to set presets for map GridSize, tile scaling, and rebuilding. These settings are used when creating new maps, and to determine how tiles are displayed in the definition editors and in the group preview. They are saved as a unity asset "[TileSet Name]TileSetInfo.asset"
+Feature: The "Maps" tab now contains controls to set grid size, tile scaling, and rebuilding options for the selected map, same as the map inspector.
+Feature: The prefab dropbox for definitions now rejects any objects that don't reference a game object asset in the project hierarchy.
+Feature: Right clicking a Tile Definition's preview pane now pings the associated prefab.
+
+Tweak: The RepTile Editor Window is now dockable.
+Tweak: Removed some Obsolete classes.
+Tweak: Added "About" window.
+Tweak: Tab display spans window.

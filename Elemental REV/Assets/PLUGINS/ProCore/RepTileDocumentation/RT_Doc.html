@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RT_Doc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+	margin: 15px 0;
+}
+
+.boxed{
+	all: inherit;
+	border: 1px solid gray;
+}
+
+.boxed2{
+	all: inherit;
+    border-style: solid;
+	border-top: 1px solid #E6E6E6;
+	border-left: 1px solid #E6E6E6;
+	border-right: 0px clear;
+	border-bottom: 0px clear;
+	padding-left: 4px;
+	padding-top: 4px;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+}
+
+h3 {
+  font-size: 18px;
+  color: #000;
+}
+
+h4 {
+  font-size: 16px;
+  color: #000;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Welcome to RepTile</h1>
+<hr />
+<p><strong>RepTile Documentation <br> 
+Beta 1c</strong></p>
+<p><img src="images/docImage_RT_Logo.png" /></p>
+<h3>Description</h3>
+<p>RepTile is a 3D grid-based level editor and framework. It provides editor tools for assembling layered maps from modular assets. It also provides a runtime API which exposes methods to inspect and modify the data stored in the maps it generates.</p>
+<p>Please send any bug reports, questions, suggestions, or feature and API ideas to <strong>playTangent@proCore3d.com</strong>.
+Your feedback is will help make RepTile more robust and awesome. </p>
+<h3>Table of Contents</h3>
+<p><strong>1.</strong><a href="#objectTypes"><strong>Object Types</strong></a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#definitions">Definitions</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tileObjects">Tile Objects</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tileGroups">Tile Sets</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#monoTiles">Mono-Tiles</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#multiTiles">Multi-Tiles</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tileGroups">Tile Groups</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#maps">Maps</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prefabAnchors">Prefab Anchors</a></a><br>
+<strong>2.</strong><a href="#repTileWindow"><strong>RepTile Window</strong></a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#palettes">Palettes</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#monoTilesPalette">MonoTiles Palette</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#multiTilesPalette">MultiTiles Palette</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#groupsPalette">Tile Groups Palette</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#mapsPalette">Maps Palette</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#settingsPalette">Settings Palette</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cursors">Cursors</a></a><br></p>
+<p><strong>3.</strong><a href="#appendix"><strong>Appendix</strong></a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#appendixShortcuts">Shortcuts</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#appendixRebuilding">Rebuilding</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#appendinxAPI">API</a></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#appendinxAPI">Guts (under the hood)</a></a><br></p>
+<p><strong>4.</strong><a href="#faq"><strong>FAQ</strong></a></a><br></p>
+<p><br>
+<a name="objectTypes"></a></p>
+<h1>Object Types</h1>
+<blockquote>
+<p>The terms and data types RepTile deals with.</p>
+</blockquote>
+<p><a name="definitions"></a></p>
+<h3>Definitions</h3>
+<div class="boxed2">
+Definitions are user generated templates for objects that are placed inside of a RepTile Map. As of the Beta version, Reptile has 3 types of definitions: Mono-Tiles, Multi-Tiles, and Tile Groups. Out of these, Mono-Tiles and Multi-Tiles define objects that are actually placed in a map, while groups are used as templates for placing the other two.
+</div>
+<p><a name="tileObjects"></a></p>
+<h3>Tile Objects</h3>
+<div class="boxed2">
+This is the term used here to refer to in-scene instances of objects that are described by Definitions. A Tile Object contains a compact reference to its corresponding definition, along with information about the Tile Object's rotation and scaling.
+</div>
+<p><a name="maps"></a></p>
+<h3>Maps</h3>
+<div class="boxed2">
+Maps are in-scene MonoBehaviours responsible for storing and managing objects placed using the RepTile menu. A map contains a layered, serializable collection of Tile Objects. More about the inner workings of maps in the Appendix.
+</div>
+<p><a name="tileSets"></a></p>
+<h3>Tile Sets</h3>
+<div class="boxed2">
+A Tile Set is a combined collection of Definitions grouped under a single reference name. On disk, a Tile Set exists as a series of Unity .asset files, one for each type of definition. Tile Sets are recovered from these files as needed by maps and the RepTile editor. This process is described in greater detail in the appendix.
+</div>
+<p><a name="monoTiles"></a></p>
+<h3>Mono-Tiles</h3>
+<div class="boxed2">
+Mono-Tiles are templates for objects which occupy a single grid cell inside of a map. They reference a model or unity prefab. When placed in a map, the prefab is instantiated as a child of the map GameObject.
+</div>
+<p><a name="multiTiles"></a></p>
+<h3>Multi-Tiles</h3>
+<div class="boxed2">
+Multi-Tiles are templates for objects which occupy multiple grid cells inside of a map. Like Mono-Tiles, they reference a model or prefab which gets instantiated when a Multi-Tile is placed in a map. The user specifies how the occupied spaces are laid out.
+</div>
+<p><a name="tileGroups"></a></p>
+<h3>Tile Groups</h3>
+<div class="boxed2">
+These are groups constructed from previously placed and oriented Tile Objects. They're created by selecting a volume in a map and copying them into a special collection.
+</p>
+</div>
+<h3>Prefab Anchors</h3>
+<div class="boxed2">
+Anchors are a way for the user to tell RepTile how to offset a prefab inside of a map grid cell based on the prefab's pivot point. The best way to think about it is that you're specifying where in a grid cell the object's pivot would have to be located in order for the model to line up correctly with the grid. This information is used to correctly position prefab instances accounting for their rotation and scaling when they are placed in a map. 
+<br><img src="images/docImage_PrefabAnchorDropdowns.png"><br>
+
+As of the Beta version, anchoring assumes that any model prefabs take up one unit of space horizontally and vertically. If your modular objects are a different default size, consider changing the grid size in the inspector of your maps to match your objects, and also unchecking the "Scale to Grid" toggle in the map. As more usage data comes in, the anchoring system will be updated to deal with different scenarios.
+</p>
+</div>
+<p><br>
+<a name="repTileWindow"></a></p>
+<h1>RepTile Window</h1>
+<blockquote>
+<p>The RepTile editor window. Accessed from the Unity toolbar under Tools/RepTile.</p>
+</blockquote>
+<p>The RepTile window is comprised of a vertical control strip on the left, and a collapsible, tabbed palette menu on the right. The palettes on the right are used to manage the different objects that RepTile deals with, including user generated object Definitions, Maps, and Tile Sets. The control strip on the left mostly contains tools for interacting within the Scene View, including cursors, selection controls, and controls for the placement grid.
+</p></p>
+<p>The left and right panes interact with each other. For example, selecting a Mono-Tile Definition in the right pane will automatically select the Mono-Tile Placement Cursor in the left control bar. The inverse will also happen. 
+</p></p>
+<h2>Definition Palettes</h2>
+<blockquote>
+<p>These palettes are used to create, manage and edit user created definitions for objects that can be placed in a RepTile map. They feature a shared layout and similar controls, including individual menu items for each definition object.</p>
+</blockquote>
+<p><img src="images/docImage_MonoTilePalette_whole.png" /></p>
+<p><a name="monoTilesPalette"></a></p>
+<h3>MonoTiles Palette</h3>
+<div class="boxed2">
+Tabbed as "MonoTiles" This palette contains Definitions for objects which contain a prefab or model instance and occupy a single grid cell. The Palette shows all of the Mono-Tile Definitions associated with the currently active Tile Set. To add a new Mono-Tile Definition simply press the first empty slot [+] in the palette. This will add a new Definition to the Tile Set, and a menu object to the palette. From there, you can drag a prefab or model onto the square preview pane of the menu object. This will add the prefab to the definition and generate a preview. 
+
+To edit how the object lines up with the grid, open up the definition editor by clicking the "Edit" button on the Definition's menu object. There, use the anchoring drop downs to set the vertical and horizontal anchor.
+
+Any changes made to a Mono-Tile Definition in the palette will be automatically propagated to all maps where the Definition was used.
+</div>
+<p><a name="multiTilesPalette"></a></p>
+<h3>MultiTiles Palette</h3>
+<div class="boxed2">
+Tabbed as "MultiTiles" This palette contains Definitions for objects which contain a prefab or model instance and occupy multiple grid cells. When first created, they are preset to occupy only the grid space at their center. Grid occupation can be edited via the Definition Editor by clicking the "Edit" button on the Definition's menu object. There an occupied index template can be edited in the preview window using the same controls as placing tiles with a placement cursor.
+</div>
+<p><a name="groupsPalette"></a></p>
+<h3>Groups Palette</h3>
+<div class="boxed2">
+Tiles already placed within a map can be grouped into group templates and stored for future use. For example, you may have created a structure from MonoTiles and MultiTiles. You can then use the Volumetric Selection Cursor to select the structure, go to the "Groups" tab, and click the first empty slot [+] to create a new group from your selection. RepTile will make a duplicate collection of the selected objects and store it. Later, you can use the Group Placement Cursor to place copies of the structure into the same map or another map using the same tile set.
+</div>
+<p><a name="DefinitionPalettesShared"></a></p>
+<h3>Shared Controls</h3>
+<div class="boxed2">
+<b>Tags:</b>
+<div class="boxed2">
+Each of the Definition Palettes allows objects to be sorted using tags. At the top of the palette, you can toggle between viewing an un-sorted list of definitions vs viewing definitions sorted by tag.
+<br><img src="images/docImage_TagDisplayToggle.png"><br>
+Tags are text strings which can be added by simply typing into the tag entry field below the prefab preview/drop-box on the Definition's menu object. Once a tag is assigned to any Definition, that tag can be assigned to any other definition in any palette using the drop down accessible from the button next to the entry field. When no definitions use a previously created tag, that tag is removed from the menu and will have to be re-typed.
+<br><img src="images/docImage_TagsDropdown.png"><br>
+</div><br>
+
+<b>Definition Editor:</b>
+<div class="boxed2">
+The Definition menu object features another important control. There is an "Edit" button, which opens the Definition Editor window. Depending on the Definition type, this window will have different contents. All of them feature a text field which allows you to name the Definition. For prefab-based tile Definitions (Mono-Tile and Multi-Tile) there is a pair of dropdowns to set up anchoring. The Multi-Tile variant also allows you to set up the configuration of tile spaces that the Multi-Tile occupies, using a grid based interface similar to RepTile's map editor.
+</div>
+</div>
+<h2>Other Palettes</h2>
+<p><a name="mapsPalette"></a></p>
+<h3>Maps Palette</h3>
+<div class="boxed2">
+This tab contains controls to create, name, and manage RepTile Maps. Maps contain layers, which can also be managed from this tab.</p>
+
+You Create a map with the "Create" button located to the right of the map list area. The map list is a scrollable area where all of the maps in the current scene are displayed. You can use this menu to select the active map, or the map that the RepTile window is set to interact with.</p>
+
+RepTile will display the placement grid of the active map in the scene view. It will also display other controls having to do with the active map, including the Layer List.</p>
+
+Map Layers are containers for Tile Objects much like Photoshop layers are containers for pixels. The layer list below the map list shows a scrollable list of the layers belonging to the current map. Here, you can select the active map using the marker on the left. You can toggle layer visibility with the eye icon. You can name layers using the text field. And you can move the contents of the Selection Volume from the active layer to any other layer using the "Move to Layer" button.</p>
+</div>
+<p><a name="settingsPalette"></a></p>
+<h3>Settings Palette</h3>
+<div class="boxed2">
+This palette contains controls for loading Tile Sets, and a hot-key reference.
+
+Use the dropdown to load any one of the Tile Sets that RepTile can detect in the project, or use the Text Field to enter the name of a new Tile Set and click the "Create" button to create one. If at any time when RepTile needs to access a tile set, it can't locate one in the project, it will generate a default tile set and put its constituent files in a "Resources" folder near the top of the project hierarchy. If it can detect some, but not all of the files for a given Tile Set, it will generate the missing collections and files to complete the set.</p>
+</div>
+<p><br></p>
+<h1>Cursors</h1>
+<hr />
+<p>Tile placement, erasing, grouping, selection, and moving is handled through cursors. A RepTile map must be in the scene for cursors to work. From there, just hold down the <strong>(<code>Ctrl</code>)</strong> key and use the mouse to operate in the scene. The cursor operates on the surface of the map grid.</p></p>
+<p>Holding the <strong>(<code>Shift</code>)</strong> modifier in addition to <strong>(<code>Ctrl</code>)</strong> causes the cursor to perform a special ray-cast through the grid and position itself at the first occupied grid cell the ray-cast hits, or on the surface of the grid, if no occupied cell is hit. Depending on the cursor, this behavior may position the cursor directly on the occupied grid cell, or on the adjacent one in the direction from which the ray-cast is made. For placement cursors, a grid will be shown at the surface of the tile being cast against.</p></p>
+<p>The top of the left menu bar contains a toggle for &quot;Affected Layers&quot;. This is a global setting which determines whether the cursors respect only the layer selected in the Maps Tab, or all layers within the map. The <strong>(<code>Shift</code>)</strong> raycast only applies to the Affected Layers. So if &quot;Affected Layers&quot; is toggled to selected only, the ray-cast will ignore occupied grid cells in other layers.</p></p>
+<p>Some cursors have a partner cursor. While a cursor that has a partner is selected, you can click <strong>(<code>Ctrl+X</code>)</strong> to swap to the partner cursor. The relationship may be one way. For example, if the Tile Placement Cursor is selected, clicking <strong>(<code>Ctrl+X</code>)</strong> will swap to the Eraser. Using the shortcut again will swap back to the Tile Placement Cursor. However, if the eraser is selected through the menu directly, using the shortcut will not swap to the Tile Placement Cursor. It's set up this way because more than one of the cursors are partnered with the eraser, but the eraser only swaps back to a partner when that partner has previously used the shortcut to swap to it. It's a matter of convenience and usability.</p></p>
+<h3>Eraser Cursor</h3>
+<div class="boxed2">
+This cursor removes any tile it overlaps while dragging. If it overlaps any of the cells occupied by a Multi-Tile, it removes the entire Multi-Tile from the map.
+</div>
+<h3>Mono-Tile Placement Cursor</h3>
+<div class="boxed2">
+Places single tiles into the map. In addition to the basic modifiers, you can also use the Insert key on your keyboard to toggle an override mode. This determines whether the Shift raycast places the cursor at the surface of any tile it hits, or over it (to directly replace the previous tile.
+</div>
+<h3>Multi-Tile Placement Cursor</h3>
+<div class="boxed2">
+The MultiTile equivalent of the Tile Placement Cursor. It uses the same shortcuts and has roughly the same functionality.
+</div>
+<h3>Group Placement Cursor</h3>
+<div class="boxed2">
+The Group equivalent of the Tile Placement Cursor. It uses the same shortcuts and has roughly the same functionality.
+</div>
+<h3>Volume Selection Cursor</h3>
+<div class="boxed2">
+Clicking and dragging this cursor allows you to select a volume of grid cells. A useful technique to select tile structures is to start at the grid, dragging, and then using the shift modifier to wrap the selection around the furthest out grid cell of the object.
+</div>
+<h3>Selection Transform Cursor</h3>
+<div class="boxed2">
+This cursor, when engaged, displays a position handle at the corner of the current selection volume. This allows you to move the selected tiles. Holding shift as you begin dragging has the effect of copying the selection and moving the copy instead. The rotate and flip shortcuts also work here for flipping and rotating anything in the selection. Dragged tiles will always replace any tiles previously occupying their destination cells (if they are in the same layer).
+</div>
+<p><br>
+<a name="appendix"></a></p>
+<h1>Appendix</h1>
+<hr />
+<p><a name="appendixShortcuts"></a></p>
+<h2>Shortcuts</h2>
+<blockquote>
+<p>In RepTile, cursors are mainly used for in-map operations. For the most part, the same set of shortcuts is used across all of the different cursors. </p>
+</blockquote>
+<h3>Modifiers (hold down)</h3>
+<table border="1" style="width:100%">
+	<tr>
+    	<td>CTRL</td>
+    	<td>makes the selected cursor active. Base for all hot-key combinations.</td>
+	</tr>
+	
+	<tr>
+    	<td>SHIFT</td>
+    	<td>modifier which makes the in-scene cursors adhere to the nearest grid cell adjacent to an occupied grid cell. This allows you to paint Tile Objects onto the outside of previously built structures.</p>
+		The notable exception is the Selection Transform cursor, where holding down SHIFT while dragging the transform handle, duplicates the tiles contained within the selection volume and moves the copy instead of the originals.
+	</td>
+	</tr>
+</table> 
+<h3>Cursor Shortcuts (click while cursor selected)</h3>
+<table border="1" style="width:100%">
+	<tr>
+    	<td>CTRL+LeftArrow <br><br> CTRL+RightArrow</td>
+    	<td>switch to next definition (prefab) in the palette. If the palette is set to 'tag' view, this shortcut selects the next definition belonging to the currently selected tag.</td>
+	</tr>	
+
+	<tr>
+    	<td>CTRL+X</td>
+    	<td>swap to partner cursor</td>
+	</tr>
+	
+	<tr>
+    	<td>CTRL+Q <br><br> CTRL+E</td>
+    	<td>rotate cursor</td>
+	</tr>
+
+	<tr>
+    	<td>CTRL+J</td>
+    	<td>flip cursor on grid aligned axis perpendicular to camera</td>
+	</tr>
+
+	<tr>
+    	<td>CTRL+Insert</td>
+    	<td>Toggles a cursor</td>
+	</tr>
+</table>
+<p><a name="appendixRebuilding"></a></p>
+<h2>Rebuilding</h2>
+<p>By default, maps automatically rebuild their tile collections whenever changes are made to definitions via the RepTile menu. Rebuilds are also performed when a <em>RepTile.Map</em> Monobehaviour initializes in-game. Any tiles derived from definitions which no longer exist are removed, as are any prefab-based tiles whose definitions no longer reference prefabs. Swapped prefabs are replaced and positions are refreshed to reflect updated prefab anchoring.
+</p></p>
+<p>This way, maps always reflect the most current state of the tile definitions. Any tiles with missing definitions are removed from the map. But, this automatic rebuilding behavior could be undesirable if you've generated light maps, because the lightmapped objects would be removed and replaced with new instances. Two options are available for this reason. In the &quot;Maps&quot; tab of the RepTile menu, there is a &quot;Strip Map&quot; button, below the &quot;Create Map&quot; and &quot;Delete Map&quot; buttons. This button permanently removes RepTile components and functionality from the map selected in the palette. This option is good if you're just using RepTile for object placement and do not plan to use the API functions in your game. Keep in mind that once the RepTile data is stripped, this action cannot be undone.</p>
+<p>If you do want to keep the RepTile data construct in place, but don't want the placed objects to be rebuilt, the map component's inspector contains a &quot;Manual Rebuild&quot; toggle. Checking this prevents automatic rebuilding from taking place, but leaves the RepTile functionality in place. This second option is non-destructive. Even in a build, the data will remain intact and the API functions can be used. Any changes to tile definitions will not be reflected in the map until this toggle is unchecked or unless you use the &quot;Rebuild&quot; button to force a manual rebuild.
+</p></p>
+<p><a name="appendixAPI"></a></p>
+<h2>API (exposed methods	 and types)</h2>
+<p>RepTile exposes functions and classes that can be used in-game. The pool of available in-game functionality will grow as features are added and based on user feedback. All exposed types can be found under the namespace <em>&quot;RepTile&quot;</em> and the exposed methods are in the class <em>&quot;RepTile.Public&quot;</em>.
+</p></p>
+<p><strong>Classes: namespace RepTile</strong></p>
+<table border="1" style="width:100%">
+	<tr>
+	    <th>object</th>
+	    <th>type</th>
+	    <th>description</th>
+		<th>members </th>
+	</tr>
+	<tr>
+		<td>public struct</td>
+    	<td><b>int3</b></td>
+    	<td>Type used for grid indices in RepTile. A three dimensional integer index</td>
+		<td>int x <br> int y <br> int z</td>
+	</tr>
+	<tr>
+		<td>public class</td>
+		<td><b>CastInfo</b></td>
+    	<td>A class containing information about a RepTile rayCast against a map grid or tile collection. </td>
+		<td nowrap>bool hitSuccess <br> Vector3 hitPoint <br> int3 hitIndex </td>
+	</tr>
+
+</table>
+<p><strong>Methods: RepTile.Public</strong></p>
+<table border="1" style="width:100%">
+	<tr>
+	    <th> return type</th>
+	    <th> method name</th>
+		<th> input arguments</th>
+	</tr>
+<tr>
+	<tr>
+    	<td> CastInfo</td>
+		<td> <b>GridCast()</b></td>
+		<td nowrap>
+			(Map map, Ray ray) <br>
+			(Map map, Vector3 rayOrigin, Vector3 rayDirection)
+		</td>
+	</tr>
+</tr>
+	<td style="border:none; background:white" backgroud> </td>
+    <td colspan=2>
+		Returns the result of a virtual ray-cast against the given map's placement grid.
+	</td>
+
+	<tr>
+		<td> CastInfo</td>
+    	<td> <b>TileCast()</b></td>
+		<td nowrap> 
+			(Map map, Ray ray) <br>
+			(Map map, Ray ray, float cutoffDistance) <br>
+			(Map map, Ray ray, int layerIndex) <br>
+			(Map map, Ray ray, float cutoffDistance, int layerIndex) <br><br>
+			
+			(Map map, Vector3 rayOrigin, Vector3 rayDirection) <br>
+			(Map map, Vector3 rayOrigin, Vector3 rayDirection, float cutoffDistance) <br>
+			(Map map, Vector3 rayOrigin, Vector3 rayDirection, int layerIndex) <br>
+			(Map map, Vector3 rayOrigin, Vector3 rayDirection, float cutoffDistance, int layerIndex)
+		</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+    <td colspan=2>
+		Returns the result of a virtual ray-cast against the tile collection.
+	</td>
+
+	<tr>
+		<td> CastInfo</td>
+    	<td> <b>CompoundCast()</b></td>
+		<td nowrap>
+			(Map map, Ray ray) <br>
+			(Map map, Ray ray, float cutoffDistance) <br>
+			(Map map, Ray ray, int layerIndex) <br>
+			(Map map, Ray ray, float cutoffDistance, int layerIndex) <br><br>
+
+			(Map map, Vector3 rayOrigin,Vector3 rayDirection) <br>
+			(Map map, Vector3 rayOrigin,Vector3 rayDirection, float cutoffDistance) <br>
+			(Map map, Vector3 rayOrigin,Vector3 rayDirection, int layerIndex) <br>
+			(Map map, Vector3 rayOrigin,Vector3 rayDirection, float cutoffDistance, int layerIndex)
+		</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+    <td colspan=2>
+		Returns the result of a virtul ray-cast against the given map's virtual grid AND tile collection, returning successful if it hits either one.
+	</td>
+
+	<tr>
+		<td> List&lt;int3&gt</td>
+    	<td> <b>RemoveAtIndex()</b></td>
+		<td>
+			(Map map, int3 index) <br>
+			(Map map, int3 index, int layer)
+		</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Removes a tile at the given index in the given layer. If no layer index is provided, tiles residing at this index are removed from all map layers. Returns an list of the occupied indices that were removed or an empty list if none were removed.
+	</td>
+
+	<tr>
+		<td> bool</td>
+    	<td> <b>CellOccupied()<b></td>
+		<td>
+			(Map map, int3 index) <br>
+			(Map map, int3 index, int layer)
+		</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and a tile index returns true if any tiles occupy the index in any layer. An optional third parameter can be given to specify the layer to check.
+	</td>
+	
+	<tr>
+		<td> GameObject</td>
+    	<td> <b>GetGameObjectAtIndex()<b></td>
+		<td> (Map map, int3 index, int layer)</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference, tile index and layer, return the GameObject of the tile at that index, if one exists there.
+	</td>
+
+	<tr>
+		<td> GameObject[]</td>
+    	<td> <b>GetGameObjectsAtIndex()<b></td>
+		<td> (Map map, int3 index) </td>
+    </tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and a tile index, returns the GameObjects of the tiles at that index in any layer, if any exist there.
+	</td>
+
+	<tr>
+		<td> int3</td>
+    	<td> <b>VectorToIndex()</b></td>
+		<td> (Map map, Vector3 positionVector)</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and a tile index returns true if any tiles occupy the index in any layer. An optional third parameter can be given to specify the layer to check.
+	</td>
+	
+	<tr>
+		<td> Vector3</td>
+    	<td> <b>IndexToVector()</b></td>
+		<td> (Map map, int3 index)</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and an index, returns the.
+	</td>
+	
+	<tr>
+		<td> Vector3</td>
+    	<td> <b>IndexToCenterVector()</b></td>
+		<td> (Map map, int3 index)</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and an index, returns center point in world space.
+	</td>
+
+	<tr>
+		<td> int3[]</td>
+    	<td> <b>GetContiguousIndices()</b></td>
+		<td> (Map map, int3 startIndex)</td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map reference and a starting index, returns a list of the indices of all contiguous occupied grid cells connected to the starting index (if any).
+	</td>
+
+	<tr>
+		<td nowrap> List&lt;List&lt;int3&gt;&gt; </td>
+    	<td> <b>GetContiguousRegions()</b></td>
+		<td> (Map map) </td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map, returns all separate contiguous regions of occupied grid cells as lists of their indices.
+	</td>
+
+	<tr>
+		<td> Vector3 </td>
+    	<td> <b>GetCenterOfMass()</b></td>
+		<td> (Map map) </td>
+	</tr>
+	<td style="border:none; background:white" backgroud> </td>
+	<td colspan=2>
+		Given a map, returns it's center of mass by averaging the positions of all of the indices of it's occupied grid cells. This is a convenience method. If you need to assign specific weight to different tile types, you would have to implement a center of mass calculation of your own.
+	</td>
+
+</table>
+<p><a name="appendixShortcuts"></a></p>
+<h2>Guts (how RepTile does the things)</h2>
+<h3>Tile Sets</h3>
+<p>RepTile stores definitions for all of the different object types that it allows you to place in a RepTile map. This includes MonoTiles, MultiTiles, and TileGroups, with TileGroups simply being layered collections of the other RepTile objects. All of these definitions are sorted into named Tile Sets and stored on disk as Unity Assets. Each definition type gets its own Asset. The Asset is named &quot;tile set name (specified by the user)&quot; plus &quot;definition type&quot;. For example a tile set named &quot;Example&quot; would save it's collection of MultiTile definitions into a file called &quot;ExampleMultiTiles.asset&quot;. 
+</p></p>
+<p>When first created, members of a tile set are saved to a default &quot;Resources&quot; folder near the project root. Something like &quot;Assets/RepTile/Resources/ExampleMultiTiles.asset&quot;. The reason these files are placed in &quot;Resources&quot; is because the tile sets need to be easily loadable in-game by the RepTile maps that use them. Once the definition collections are saved as asset files, they can be moved to a &quot;Resources&quot; folder of your choosing elsewhere in the project. RepTile will find them by name when it needs to load or save them, as long as they have the same relationship to the &quot;Resources&quot; folder that they are occupy as in the default location. So if the default location is &quot;Assets/RepTile/Resources&quot; you could move the asset files to a folder &quot;Assets/MyExampleProjectStuff/Files/Resources&quot; and RepTile should be able to load the tile set correctly.
+</p></p>
+<p>If RepTile can't find a Tile Set to load, it will create a Default Tile set in the default location. If RepTile can find any file belonging to a named tile set, it will create and save the missing collections of other definition types.
+</p></p>
+<p>The reason that separate files are used is so that at run-time, RepTile can omit loading collections of definitions which are only used by the editor. As of the Beta version, the only example of this is tile-groups, which are used to store organized sets of tile objects, but do not have an associated in-map Object type. They are only used in the editor, for placement of tile objects into maps. Because they are cubic arrays of objects, though, they can take up a lot of space, so they are not loaded at run-time.
+</p></p>
+<p>It's likely that other definitions will be introduced in future RepTile releases that are treated in a way similar to groups. 
+</p></p>
+<h3>Maps</h3>
+<p>Although you can create multiple Tile Sets, each RepTile Map may only be associated with one Tile Set. As of the Beta version, a Tile Set may only contain 255 definitions for each Definition type. The reason for this is because of how Maps work under the hood.
+</p></p>
+<p>A Map contains a layered collection of Tile Objects and various functions for managing that collection. Tile Objects are data structures that represent Tile Definitions within a Map. They contain information necessary for proper object placement within the Map, such as rotation, scale flipping, and anchoring. They are correlated with Definitions in a tile set via the following ID system:
+</p></p>
+<p>As described above, Tile Sets are collections of user generated Definitions. A Tile Set contains a hash table which stores Definitions indexed by GUID. The GUIDs insure uniqueness and good asset tracking in the editor, but they are too bulky to use efficiently in a Map because of the cubic number of objects that can be placed inside a Map. If each copy of a Tile Object contained a 16 Byte GUID, the memory load would get big quickly as Tile Objects are placed in the Map. So Tile Objects placed in the map contain a smaller ID instead, in the form of a single Byte. A byte stores 256 possible numbers, with 0 in this usage reserved for a special case.
+</p></p>
+<p>All Layered Collections in RepTile (maps, groups, and the clipboard) all contain an ID map which correlates the small Byte IDs used in-map to the larger GUIDs used to index Definitions in Tile Sets. These ID Maps store a reference to the tile set, by name, and accumulate Pairings of Byte ID to GUID, as Tile Objects are added to the map. The correlations are refreshed and validated whenever the tile-set is re-loaded. This is done in order to clear uncorrelated Bytes as well as to remove any Tile Objects whose Definition references are obsolete at the time of rebuild. The freed up Bytes can then be re-assigned to new GUIDs as new objects are added to the Map.
+</p></p>
+<p>This system may seem like it introduces unnecessary complexity, but it was the best way to address the two pronged issue of minimizing memory usage and creating unique Definitions.
+</p></p>
+<p>To elaborate. It was possible to use Byte IDs across the board, but I opted not to extend the use of byte IDs to the Tile Sets because the Bytes are not unique. If a map were assembled using a given set of definitions and saved as a prefab, and afterward Tile Definitions were removed from the Tile Set and new Definitions were added to the Tile Set in their place, those new Definitions would occupy the previously used Byte IDs. Then, when the map is instantiated, the Tile Objects whose Definitions had been removed from the Tile Set would be replaced by Tile Objects generated from the Definitions which were added to the Tile Set under the same Byte ids. But, Under the ID Map system, when a map is loaded, it asks for it's Tile Set by name. The ID Map is then used to see if each GUID that is mapped to a Byte ID in the ID Map, still exists in the Tile Set. If it doesn't the Tile Objects under that Byte ID are removed from the Map, the association between the GUID and the Byte ID is dropped, and the Byte ID is freed up to be re-used.
+</p></p>
+<p>Whenever a Map is loaded, it undergoes a full re-build. This means that RepTile attempts to re-load the Tile Set associated with that Map from a &quot;Resources&quot; folder, then checks the ID Map against the recovered Tile Set, and finally, Updates the in-map Tile Objects based on the current Definitions in the recovered Tile Set.
+</p></p>
+<p><br>
+<a name="faq"></a></p>
+<h1>FAQ</h1>
+<hr />
+<p><br></p>
+<div class="boxed2">
+Q: My prefabs aren't rendered in the definition preview. What's up with that?
+<br><br>
+A: Try selecting the folder containing the prefabs in the project hierarchy and then re-importing them using right-click menu / re-import.
+</div>
+<p><br></p>
+<div class="boxed2">
+Q: Modifying a map's transform during run-time leaves the visual meshes behind. What the heck?
+<br><br>
+A: This happens if your prefabs are marked as static. During run-time Unity generates a combined mesh for all of the tiles in the map. Making the prefabs non-static gets around this issue.
+</div>
+<p><br></p>
+<div class="boxed2">
+Q: Unity crashes when I drag a map directly into the scene-view. Porque?
+<br><br>
+A: Much like the above question, this shouldn't happen if your prefabs are not set to be static. The other way of getting around it is to drag them into the scene hierarchy instead of the scene view window.
+</div>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

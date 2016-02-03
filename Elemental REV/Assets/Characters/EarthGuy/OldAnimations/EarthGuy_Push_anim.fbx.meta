@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: eed1f84dbd0c9d4488840a315c2db165
+timeCreated: 1440221280
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: EarthGuy
+    100002: //RootNode
+    100004: Eye_L_JNT
+    100006: Eye_R_JNT
+    100008: Finger_L_END_JNT
+    100010: Finger_L_JNT
+    100012: Finger_R_END_JNT
+    100014: Finger_R_JNT
+    100016: Hand_L_JNT
+    100018: Hand_R_JNT
+    100020: left
+    100022: Neck_JNT
+    100024: Root_JNT
+    100026: top1
+    400000: EarthGuy
+    400002: //RootNode
+    400004: Eye_L_JNT
+    400006: Eye_R_JNT
+    400008: Finger_L_END_JNT
+    400010: Finger_L_JNT
+    400012: Finger_R_END_JNT
+    400014: Finger_R_JNT
+    400016: Hand_L_JNT
+    400018: Hand_R_JNT
+    400020: left
+    400022: Neck_JNT
+    400024: Root_JNT
+    400026: top1
+    4300000: EarthGuy
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: EarthGuy
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 14
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: EarthGuy
+        weight: 1
+      - path: left
+        weight: 1
+      - path: Root_JNT
+        weight: 1
+      - path: Root_JNT/Eye_L_JNT
+        weight: 1
+      - path: Root_JNT/Eye_R_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_L_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_L_JNT/Finger_L_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_L_JNT/Finger_L_JNT/Finger_L_END_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_R_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_R_JNT/Finger_R_JNT
+        weight: 1
+      - path: Root_JNT/Neck_JNT/Hand_R_JNT/Finger_R_JNT/Finger_R_END_JNT
+        weight: 1
+      - path: top1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: f2a90244a0e87af408bb6240b0d2d3ee
+timeCreated: 1447294060
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Eye_L_JNT
+    100004: Eye_R_JNT
+    100006: Head_JNT
+    100008: Leg_END_L_JNT
+    100010: Leg_END_R_JNT
+    100012: Leg_L_JNT
+    100014: Leg_R_JNT
+    100016: Root_JNT
+    100018: Root_JNT_GRP
+    100020: Skeleton_GRP
+    100022: Wing_A_01_L_JNT
+    100024: Wing_A_01_R_JNT
+    100026: Wing_A_02_L_JNT
+    100028: Wing_A_02_R_JNT
+    100030: Wing_A_03_L_JNT
+    100032: Wing_A_03_R_JNT
+    100034: Wing_A_END_L_JNT
+    100036: Wing_A_END_R_JNT
+    100038: Wing_B_01_L_JNT
+    100040: Wing_B_01_R_JNT
+    100042: Wing_B_02_L_JNT
+    100044: Wing_B_02_R_JNT
+    100046: Wing_B_END_L_JNT
+    100048: Wing_B_END_R_JNT
+    100050: Wing_Base_L_JNT
+    100052: Wing_Base_R_JNT
+    100054: Wing_Fork_L_JNT
+    100056: Wing_Fork_R_JNT
+    100058: Wing_Mid_L_JNT
+    100060: Wing_Mid_R_JNT
+    400000: //RootNode
+    400002: Eye_L_JNT
+    400004: Eye_R_JNT
+    400006: Head_JNT
+    400008: Leg_END_L_JNT
+    400010: Leg_END_R_JNT
+    400012: Leg_L_JNT
+    400014: Leg_R_JNT
+    400016: Root_JNT
+    400018: Root_JNT_GRP
+    400020: Skeleton_GRP
+    400022: Wing_A_01_L_JNT
+    400024: Wing_A_01_R_JNT
+    400026: Wing_A_02_L_JNT
+    400028: Wing_A_02_R_JNT
+    400030: Wing_A_03_L_JNT
+    400032: Wing_A_03_R_JNT
+    400034: Wing_A_END_L_JNT
+    400036: Wing_A_END_R_JNT
+    400038: Wing_B_01_L_JNT
+    400040: Wing_B_01_R_JNT
+    400042: Wing_B_02_L_JNT
+    400044: Wing_B_02_R_JNT
+    400046: Wing_B_END_L_JNT
+    400048: Wing_B_END_R_JNT
+    400050: Wing_Base_L_JNT
+    400052: Wing_Base_R_JNT
+    400054: Wing_Fork_L_JNT
+    400056: Wing_Fork_R_JNT
+    400058: Wing_Mid_L_JNT
+    400060: Wing_Mid_R_JNT
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
