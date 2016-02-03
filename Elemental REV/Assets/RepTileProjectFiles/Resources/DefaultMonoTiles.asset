@@ -11,5 +11,35 @@ MonoBehaviour:
   m_Script: {fileID: -389131388, guid: 22246c02f513f034a9d00b4026ef40b4, type: 3}
   m_Name: DefaultMonoTiles
   m_EditorClassIdentifier: 
-  keys: []
-  values: []
+  keys:
+  - 1e3e8dc7-d4bb-506a-ba9c-d924414663aa
+  - 1ac962e6-a3b4-6cc3-e386-e81740a33639
+  - 4f97779e-2248-8ee5-7269-f280c9a2b74a
+  values:
+  - objectName: 
+    stringID: 1e3e8dc7-d4bb-506a-ba9c-d924414663aa
+    creationIndex: 0
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 146558, guid: b8cfb9dc379ae3f4baa469f9e539687b, type: 2}
+  - objectName: 
+    stringID: 1ac962e6-a3b4-6cc3-e386-e81740a33639
+    creationIndex: 1
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 138048, guid: 1d91c0d25bdfc8b41adafbf55dc3cbfc, type: 2}
+  - objectName: 
+    stringID: 4f97779e-2248-8ee5-7269-f280c9a2b74a
+    creationIndex: 2
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 134482, guid: 5c17b451f8b9f3a4a82cb73b8ff0e87f, type: 2}
