@@ -92,7 +92,7 @@ public class HeroMove : MonoBehaviour {
             rgBody.AddForce(new Vector3(0, -gravity * rgBody.mass, 0));
         }
 
-        //Reset the speed modifiers
+        //Reset the moveDamp modifiers
         movingGroundVelocity = Vector3.zero;
     }
 
@@ -148,7 +148,7 @@ public class HeroMove : MonoBehaviour {
 
     float CalculateJumpVerticalSpeed()
     {
-        // From the jump height and gravity we deduce the upwards speed 
+        // From the jump height and gravity we deduce the upwards moveDamp 
         // for the character to reach at the apex.
         // By using the Magic of Meth (yes meth)
         return Mathf.Sqrt(2 * jumpHeight * gravity);
