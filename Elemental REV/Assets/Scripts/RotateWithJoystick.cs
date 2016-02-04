@@ -1,34 +1,61 @@
 ﻿using UnityEngine;
-using System.Collections;
 using InControl;
 
 public class RotateWithJoystick : MonoBehaviour
 {
 
     public float rotateSpeed = 5;
+    public float zRotationAngleLimit = 20;
 
+    private float _maxZRotation;
+    private float _minZrotation;
 
-	// Update is called once per frame
-	void Update () {
-        InputDevice device = InputManager.ActiveDevice;
-        Camera.main.transform.LookAt(transform);
-
-	    if (!device)
-	        return;
-
-	    //Vector3 from = transform.rotation.eulerAngles;
-        //Vector3 to = new Vector3(from.x, from.y + device.RightStickX, from.z + device.RightStickY);
-
-        //transform.rotation = Quaternion.Slerp(Quaternion.Euler(from), Quaternion.Euler(to), Time.time * rotateSpeed);
-
-	    transform.Rotate(0, device.RightStickX > 0.5? device.RightStickX : 0f, device.RightStickY, Space.Self);
-
-
-	}
-
-    void OnGUI()
+    void Start()
     {
-        //GUILayout.HorizontalSlider()
+        _maxZRotation = (transform.rotation.eulerAngles.z + zRotationAngleLimit) % 360;
+        _minZrotation = ((transform.rotation.eulerAngles.z - zRotationAngleLimit) % 360 + 360) % 360;
     }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Camera.main.transform.LookAt(transform);
+
+        InputDevice device = InputManager.ActiveDevice;
+        if (!device)
+            return;
+
+        var xRotation = device.RightStickX * rotateSpeed;
+        var zRotation = device.RightStickY * rotateSpeed;
+
+        SingleAxisRotation(xRotation, zRotation);
+
+    }
+
+    private void SingleAxisRotation(float xRotation, float zRotation)
+    {
+        if (Mathf.Abs(xRotation) > Mathf.Abs(zRotation))
+        {
+            RotateOnXAxis(xRotation);
+        }
+        else if (ZRotationIsWithinLimits(zRotation))
+        {
+            RotateOnZAxis(zRotation);
+        }
+    }
+
+    private void RotateOnZAxis(float zRotation)
+    {
+        transform.Rotate(0, 0, zRotation, Space.Self);
+    }
+
+    private void RotateOnXAxis(float xRotation)
+    {
+        transform.Rotate(0, xRotation, 0, Space.World);
+    }
+
+    private bool ZRotationIsWithinLimits(float zRotation)
+    {
+        return Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) < _maxZRotation || Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) > _minZrotation;
+    }
 }
