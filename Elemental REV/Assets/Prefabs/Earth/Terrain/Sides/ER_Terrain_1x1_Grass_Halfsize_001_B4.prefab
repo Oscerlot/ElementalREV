@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 417262}
   - 33: {fileID: 3307016}
   - 23: {fileID: 2310790}
-  - 65: {fileID: 6510192}
+  - 65: {fileID: 6582526}
   m_Layer: 0
   m_Name: ER_Terrain_1x1_Grass_Halfsize_001_B4
   m_TagString: Untagged
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.771965, y: -10.982016, z: -6.453799}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,7 +65,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120426}
   m_Mesh: {fileID: 4300000, guid: 1fdedfda96e444149b0dca44e79f59c1, type: 3}
---- !u!65 &6510192
+--- !u!65 &6582526
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,15 +75,27 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 29.67041, y: 56.16668, z: 100.47461}
-  m_Center: {x: 44.137512, y: 27.994541, z: 0.23730469}
+  m_Size: {x: 0.29670408, y: 0.5616668, z: 1.0047461}
+  m_Center: {x: 0.44137514, y: 0.2799454, z: 0.0023730397}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120426}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 1, y: 1}
   scaleToGrid_Horizontal: 1
-  scaleToGrid_Vertical: 1
+  scaleToGrid_Vertical: 0
   manualRebuild: 0

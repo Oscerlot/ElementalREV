@@ -1,0 +1,515 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -389131388, guid: 22246c02f513f034a9d00b4026ef40b4, type: 3}
+  m_Name: Oscar_Test_PaletteMonoTiles
+  m_EditorClassIdentifier: 
+  keys:
+  - 21e5b2c6-50cf-bf49-46ee-b5e76ae07a09
+  - 64d48443-0779-1921-5e94-e6ea5d4f8fd1
+  - d3e79778-445e-a02e-71fe-e8126a288207
+  - 0eb75324-d5cd-5b9a-6dfe-9a2a08bae3c2
+  - 7f41fa9a-4d55-cecf-da7f-483161849245
+  - de6788ce-6098-350e-c475-3a412d644c99
+  - 366fd977-7f70-360b-18a9-dec811916ffe
+  - a50b76df-5219-a299-0c93-8d19627b7e98
+  - bea132ac-0899-84f8-cc30-aeac71c3db8d
+  - a3611f76-50bd-1c05-6c95-d2ef0e913cd2
+  - 093aa897-9054-527d-b72a-9e3c34780e83
+  - 2e06ebe1-bf06-d68a-a6fd-95eb76b49273
+  - 27384f49-ec47-6ba2-fb52-c04552463266
+  - ad2b6249-2be1-9a78-49f2-71079e87caa1
+  - 0c7f8307-cbd1-c3d9-05ba-dc66736e863b
+  - 26e5f4b4-0c56-3db9-0abd-049946d29dfe
+  - 84ecfe77-437a-9d4f-b481-d06b4703e91a
+  - 1ce1cd4b-a753-a455-2e52-4021e4e67be5
+  - 4985101c-257c-5067-de43-95a49da5adb6
+  - e77cc009-08e5-bdc3-aeb6-2ffc3b3ffa28
+  - 7822db48-45db-d0ca-5464-7f0b5330a1d1
+  - 6d3d0d9d-f1af-0611-ae13-69de73f000d8
+  - 7c1c7886-a8e5-d49f-1af6-f014888a3ce2
+  - 2df55ed4-9131-bcae-8b9a-bfb0426f074a
+  - 4177c387-80f0-987f-4602-f592310ced50
+  - f8b4bee8-9544-0deb-35a9-02043d381f86
+  - a7efd0d1-bcfd-7e97-e799-e25b0d2c3854
+  - 1e096649-4750-9338-b49c-51a13fdf3035
+  - 108ddebb-9558-36e2-9c8b-e941b1c9c5b0
+  - 0080bd53-3e79-336a-a688-37293a991b75
+  - 47d64a56-978e-cb8b-ab05-b589e35ad78b
+  - ab7a0634-7ae2-6796-01fc-8a359ccc1b00
+  - fa7cca38-52c1-63ca-30ea-c9329deade44
+  - 2661edca-69c9-2aea-52c8-54e69cd840b4
+  - 76b2a0a5-fca2-7492-5044-d8da05f4808a
+  - 7b2c1cc5-992d-4b2a-61c2-118a1f33cec9
+  - 96443eaa-0ca2-9fe4-c6f6-5c8d0cfd1ae1
+  - cbd87910-6bb4-8d53-ccd1-5e7e8660fba1
+  - 83e126e4-5a8b-ebda-cf72-961cdc7a2e57
+  - 00625e7f-eb25-a5a5-b38b-2c3f682a140f
+  - 54fce27b-71e8-6212-3fe1-6b7f696ebbbc
+  - 9d45519b-b7f5-c1db-8689-4132654ab37d
+  - db47784e-72b6-1ebb-f2b1-e15ee4e64a44
+  - 62981444-6294-18f7-0cd0-085ca22cef8a
+  - be12cc40-33b8-c6e7-4341-3ce1c8b31d33
+  - d252ce73-8142-13de-dc14-cc49bee7d2a5
+  - 93c296e6-ba0e-1b75-6568-d2127cd8b902
+  - 414890af-a821-3357-ac1f-5d1e8191acb5
+  - 25ea68b4-6daf-1039-00e7-1a85738ae728
+  - dd17058d-9bee-8d96-da25-7e2429b918f8
+  values:
+  - objectName: 
+    stringID: 21e5b2c6-50cf-bf49-46ee-b5e76ae07a09
+    creationIndex: 0
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 131950, guid: 078f7d13424389f4094d2a0f1bcf50b1, type: 2}
+  - objectName: 
+    stringID: 64d48443-0779-1921-5e94-e6ea5d4f8fd1
+    creationIndex: 1
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 194606, guid: 27f67fb09c862c242a2ece952fc8b8eb, type: 2}
+  - objectName: 
+    stringID: d3e79778-445e-a02e-71fe-e8126a288207
+    creationIndex: 2
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 149178, guid: 5c00bec6a8c73a044a550a3c2a2a64d6, type: 2}
+  - objectName: 
+    stringID: 0eb75324-d5cd-5b9a-6dfe-9a2a08bae3c2
+    creationIndex: 3
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 190136, guid: 38d72de64c2d88649b7ac4f18e9fd04c, type: 2}
+  - objectName: 
+    stringID: 7f41fa9a-4d55-cecf-da7f-483161849245
+    creationIndex: 4
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 190842, guid: 42c3516c320a0fd44b2b5e8b395dab85, type: 2}
+  - objectName: 
+    stringID: de6788ce-6098-350e-c475-3a412d644c99
+    creationIndex: 5
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 117990, guid: fd65d7c65715a054389dedfe13656cbc, type: 2}
+  - objectName: 
+    stringID: 366fd977-7f70-360b-18a9-dec811916ffe
+    creationIndex: 6
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 166094, guid: 78046469675b468488544b5404ec1f9d, type: 2}
+  - objectName: 
+    stringID: a50b76df-5219-a299-0c93-8d19627b7e98
+    creationIndex: 7
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 177766, guid: c17a8c0b6c48813468a8ac20b790f115, type: 2}
+  - objectName: 
+    stringID: bea132ac-0899-84f8-cc30-aeac71c3db8d
+    creationIndex: 8
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 192674, guid: 2a5bf58e792eb354cb609de0812667d2, type: 2}
+  - objectName: 
+    stringID: a3611f76-50bd-1c05-6c95-d2ef0e913cd2
+    creationIndex: 9
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 153556, guid: 9dd2fbc5473c7ec4491e75f321b1866c, type: 2}
+  - objectName: 
+    stringID: 093aa897-9054-527d-b72a-9e3c34780e83
+    creationIndex: 10
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 151434, guid: 0667025d8080c154faac3ad5e4f865af, type: 2}
+  - objectName: 
+    stringID: 2e06ebe1-bf06-d68a-a6fd-95eb76b49273
+    creationIndex: 11
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 169742, guid: 28646626363ec6a489c5005545cb74e8, type: 2}
+  - objectName: 
+    stringID: 27384f49-ec47-6ba2-fb52-c04552463266
+    creationIndex: 12
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 151182, guid: c5015c6ffef4f94459f11810f7280bbe, type: 2}
+  - objectName: 
+    stringID: ad2b6249-2be1-9a78-49f2-71079e87caa1
+    creationIndex: 13
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 106106, guid: 78a54145e3be30840b1eb939beb480cd, type: 2}
+  - objectName: 
+    stringID: 0c7f8307-cbd1-c3d9-05ba-dc66736e863b
+    creationIndex: 14
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 120320, guid: a10d43a918f269c488685b0f4a583580, type: 2}
+  - objectName: 
+    stringID: 26e5f4b4-0c56-3db9-0abd-049946d29dfe
+    creationIndex: 15
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 190450, guid: 106e18325036b47419316f3802c72a46, type: 2}
+  - objectName: 
+    stringID: 84ecfe77-437a-9d4f-b481-d06b4703e91a
+    creationIndex: 16
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 109976, guid: cb04b1e6caef1eb4b99642a30ecea02d, type: 2}
+  - objectName: 
+    stringID: 1ce1cd4b-a753-a455-2e52-4021e4e67be5
+    creationIndex: 17
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 165036, guid: 5a597815ace486644bd2df96ec7dd6ba, type: 2}
+  - objectName: 
+    stringID: 4985101c-257c-5067-de43-95a49da5adb6
+    creationIndex: 18
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 147142, guid: 1a616770f3f55ea42be9328d8a13ce18, type: 2}
+  - objectName: 
+    stringID: e77cc009-08e5-bdc3-aeb6-2ffc3b3ffa28
+    creationIndex: 19
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 114418, guid: 9b8808b24925759449a97a52b32b77cf, type: 2}
+  - objectName: 
+    stringID: 7822db48-45db-d0ca-5464-7f0b5330a1d1
+    creationIndex: 20
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 107584, guid: b2b0156a2bc9fe741983ce08e5435913, type: 2}
+  - objectName: 
+    stringID: 6d3d0d9d-f1af-0611-ae13-69de73f000d8
+    creationIndex: 21
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 146210, guid: 8e69f19a717b9b042bee28a50cd53e89, type: 2}
+  - objectName: 
+    stringID: 7c1c7886-a8e5-d49f-1af6-f014888a3ce2
+    creationIndex: 22
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 105016, guid: 75682262fb93cc246be8b29a3a717b1e, type: 2}
+  - objectName: 
+    stringID: 2df55ed4-9131-bcae-8b9a-bfb0426f074a
+    creationIndex: 23
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 186590, guid: b31031022f622ac42b587d7d458939eb, type: 2}
+  - objectName: 
+    stringID: 4177c387-80f0-987f-4602-f592310ced50
+    creationIndex: 24
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 100504, guid: ff69b5b040d3635428c2db01f9de9036, type: 2}
+  - objectName: 
+    stringID: f8b4bee8-9544-0deb-35a9-02043d381f86
+    creationIndex: 25
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 168622, guid: 104719fa47eac304f84b9987bdbde60f, type: 2}
+  - objectName: 
+    stringID: a7efd0d1-bcfd-7e97-e799-e25b0d2c3854
+    creationIndex: 26
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 193904, guid: c242881c00a210a4aad3d5becb9c5e51, type: 2}
+  - objectName: 
+    stringID: 1e096649-4750-9338-b49c-51a13fdf3035
+    creationIndex: 27
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 120426, guid: f1826a88bdafa984ea7c315123b47565, type: 2}
+  - objectName: 
+    stringID: 108ddebb-9558-36e2-9c8b-e941b1c9c5b0
+    creationIndex: 28
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 161356, guid: 00121c5a512a2d940bfea807bad1d53e, type: 2}
+  - objectName: 
+    stringID: 0080bd53-3e79-336a-a688-37293a991b75
+    creationIndex: 29
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 138720, guid: 7dae532d977ab164bb3bef10f484dc9f, type: 2}
+  - objectName: 
+    stringID: 47d64a56-978e-cb8b-ab05-b589e35ad78b
+    creationIndex: 30
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 103334, guid: 745c6fbaf359fa34fa478d19271bb162, type: 2}
+  - objectName: 
+    stringID: ab7a0634-7ae2-6796-01fc-8a359ccc1b00
+    creationIndex: 31
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 100858, guid: 9e4e919c47f70ae4897628e9f32ffce9, type: 2}
+  - objectName: 
+    stringID: fa7cca38-52c1-63ca-30ea-c9329deade44
+    creationIndex: 32
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 199038, guid: 59d4e18fbbc44bb42af44e7fb68a8fbc, type: 2}
+  - objectName: 
+    stringID: 2661edca-69c9-2aea-52c8-54e69cd840b4
+    creationIndex: 33
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 166068, guid: 7bb5196f157b7c8428e78b54140db47a, type: 2}
+  - objectName: 
+    stringID: 76b2a0a5-fca2-7492-5044-d8da05f4808a
+    creationIndex: 34
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 124242, guid: 0681e2e58fd03444fa522bcca4658ccd, type: 2}
+  - objectName: 
+    stringID: 7b2c1cc5-992d-4b2a-61c2-118a1f33cec9
+    creationIndex: 35
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 159960, guid: 600b5917e67e75f4aba3d9fab508360a, type: 2}
+  - objectName: 
+    stringID: 96443eaa-0ca2-9fe4-c6f6-5c8d0cfd1ae1
+    creationIndex: 36
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 153560, guid: 656340809ae69414da41c482337d3857, type: 2}
+  - objectName: 
+    stringID: cbd87910-6bb4-8d53-ccd1-5e7e8660fba1
+    creationIndex: 37
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 183640, guid: a42b482d4d5e7ab439bef1fa89c41915, type: 2}
+  - objectName: 
+    stringID: 83e126e4-5a8b-ebda-cf72-961cdc7a2e57
+    creationIndex: 38
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 118408, guid: d335d9092a94a8242b2976095b571c4e, type: 2}
+  - objectName: 
+    stringID: 00625e7f-eb25-a5a5-b38b-2c3f682a140f
+    creationIndex: 39
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 110136, guid: 05393f47c1a5aca46b66d97d9a30bcf1, type: 2}
+  - objectName: 
+    stringID: 54fce27b-71e8-6212-3fe1-6b7f696ebbbc
+    creationIndex: 40
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 115672, guid: 15d2cd262d0a1df4f956b158dd5fe5e8, type: 2}
+  - objectName: 
+    stringID: 9d45519b-b7f5-c1db-8689-4132654ab37d
+    creationIndex: 41
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 100158, guid: c2730abae28a4b143b210e66cfd7cf80, type: 2}
+  - objectName: 
+    stringID: db47784e-72b6-1ebb-f2b1-e15ee4e64a44
+    creationIndex: 42
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 124384, guid: dc91a70be6c154444aefff129a96207b, type: 2}
+  - objectName: 
+    stringID: 62981444-6294-18f7-0cd0-085ca22cef8a
+    creationIndex: 43
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 187082, guid: 747928776d192c74d80b346216439288, type: 2}
+  - objectName: 
+    stringID: be12cc40-33b8-c6e7-4341-3ce1c8b31d33
+    creationIndex: 44
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 134408, guid: 4e2aade7c09299f41942855793675602, type: 2}
+  - objectName: 
+    stringID: d252ce73-8142-13de-dc14-cc49bee7d2a5
+    creationIndex: 45
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 191644, guid: 7a863aa894338154094d1c68881194ab, type: 2}
+  - objectName: 
+    stringID: 93c296e6-ba0e-1b75-6568-d2127cd8b902
+    creationIndex: 46
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 193122, guid: 84e3b69b8aadfb542be173c0772ce58e, type: 2}
+  - objectName: 
+    stringID: 414890af-a821-3357-ac1f-5d1e8191acb5
+    creationIndex: 47
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 119948, guid: d5c48143499172240850445ccd8b5be1, type: 2}
+  - objectName: 
+    stringID: 25ea68b4-6daf-1039-00e7-1a85738ae728
+    creationIndex: 48
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 167944, guid: 1dfd56f2c186d6a4f90975705ef82b2b, type: 2}
+  - objectName: 
+    stringID: dd17058d-9bee-8d96-da25-7e2429b918f8
+    creationIndex: 49
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 143596, guid: 71e257fc3a6750744bc31ee50ec8e6d0, type: 2}

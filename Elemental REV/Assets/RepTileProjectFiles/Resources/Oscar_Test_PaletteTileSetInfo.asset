@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 56570984, guid: 22246c02f513f034a9d00b4026ef40b4, type: 3}
+  m_Name: Oscar_Test_PaletteTileSetInfo
+  m_EditorClassIdentifier: 
+  gridSize: {x: 1, y: 1}
+  scaleToGrid_Horizontal: 1
+  scaleToGrid_Vertical: 1
+  manualRebuild: 0

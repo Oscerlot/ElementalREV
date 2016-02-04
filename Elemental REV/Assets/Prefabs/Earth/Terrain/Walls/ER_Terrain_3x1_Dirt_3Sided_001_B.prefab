@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 498452}
   - 33: {fileID: 3361876}
   - 23: {fileID: 2332898}
-  - 65: {fileID: 6520778}
+  - 65: {fileID: 6517288}
   m_Layer: 0
   m_Name: ER_Terrain_3x1_Dirt_3Sided_001_B
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 153556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.345398, y: -11.061927, z: 1.8365903}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153556}
   m_Mesh: {fileID: 4300000, guid: c931c17afb58b7848ad2b28ade10b744, type: 3}
---- !u!65 &6520778
+--- !u!65 &6517288
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -73,15 +73,27 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 110.379944, y: 300, z: 114.75676}
-  m_Center: {x: 5.189972, y: -50, z: -0.4150772}
+  m_Size: {x: 1.1037993, y: 3, z: 1.1475675}
+  m_Center: {x: 0.0518997, y: -0.5, z: -0.004150778}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153556}
