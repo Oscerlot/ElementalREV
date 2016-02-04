@@ -7,24 +7,25 @@ using UnityEngine.Events;
 /// </summary>
 
 [RequireComponent(typeof(TriggerAwareness))]
-public class InteractableTrigger : MonoBehaviour
+public class AreaTrigger : MonoBehaviour
 {
 
     [System.NonSerialized]
     public List<GameObject> objectsInTrigger;
-    public TriggerObject[] triggersAffected;
+
+    public TriggerObject[] objectsAffected;
     public UnityEvent OnActivate;
     public UnityEvent OnDeactivate;
 
 
     void OnDrawGizmosSelected()
     {
-        if (triggersAffected == null)
+        if (objectsAffected == null)
             return;
 
         Gizmos.color = Color.blue;
 
-        foreach (TriggerObject tObject in triggersAffected)
+        foreach (TriggerObject tObject in objectsAffected)
         {
             if (!tObject)
                 return;
@@ -55,7 +56,7 @@ public class InteractableTrigger : MonoBehaviour
 
     private void ActivateInteractables()
     {
-        foreach (TriggerObject tObject in triggersAffected)
+        foreach (TriggerObject tObject in objectsAffected)
         {
             if (!tObject)
                 return;
@@ -71,7 +72,7 @@ public class InteractableTrigger : MonoBehaviour
 
     private void DeactivateInteractables()
     {
-        foreach (TriggerObject tObject in triggersAffected)
+        foreach (TriggerObject tObject in objectsAffected)
         {
             if (!tObject)
                 return;

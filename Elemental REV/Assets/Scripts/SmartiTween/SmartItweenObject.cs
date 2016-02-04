@@ -6,7 +6,7 @@ using System.Collections;
 /// When activated the gameObject will move towards a destination. The gameObject will stop moving once the destination is reached or it is deactivated.
 /// For use on single destination interactables.
 /// </summary>
-public class SmartItweenTrigger : TriggerObject
+public class SmartItweenObject : TriggerObject
 {
 
     //Public Variables
