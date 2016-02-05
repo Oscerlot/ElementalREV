@@ -191,17 +191,15 @@ GameObject:
   - 95: {fileID: 9507968}
   - 136: {fileID: 13634294}
   - 54: {fileID: 5421034}
-  - 114: {fileID: 11491362}
-  - 114: {fileID: 11447324}
-  - 114: {fileID: 11403540}
-  - 114: {fileID: 11412618}
+  - 114: {fileID: 11429468}
+  - 114: {fileID: 11424008}
   m_Layer: 10
   m_Name: WaterGuy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &182402
 GameObject:
   m_ObjectHideFlags: 1
@@ -382,9 +380,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179898}
-  m_LocalRotation: {x: 0, y: 0.9242295, z: 0, w: 0.38183755}
-  m_LocalPosition: {x: -1.4849977, y: 0.8800001, z: -0.9565584}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421166}
   - {fileID: 443596}
@@ -487,7 +485,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11403540
+--- !u!114 &11424008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -495,26 +493,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 179898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22dccec58e69cd48a06bfcbf49862c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff2f47e87e9f2d4ca2b920e128118fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderBackground:
-    r: 0
-    g: 0.245994
-    b: 0.72794116
-    a: 1
-  sliderFill:
-    r: 0
-    g: 0.83448267
-    b: 1
-    a: 1
-  drownSpeedModifier: 0.5
-  walkingDuration: 4
-  liquidWalkingSpeed: 1
-  drowningOffset: 0.5
-  liquidLayers: {}
-  canWalkOn: 1
---- !u!114 &11412618
+--- !u!114 &11429468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -522,42 +504,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 179898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441c2f579991b9e468862d69a100ec46, type: 3}
+  m_Script: {fileID: 11500000, guid: bfac5258677c176478a5de1999ddc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yLimit: -10
-  otherPlayer: {fileID: 0}
---- !u!114 &11447324
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bc3d7a7b0a634bb1ad8423b14f903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlSetup: 0
-  isPlayer1: 0
---- !u!114 &11491362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f06791e2b6624a999845bc02c639d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: 2
-  whatIsGround: {}
-  noJumpingLayers: {}
-  moveForceModifier: 2.5
-  jumpHeight: 1.1
-  maxVelocityChange: 1
-  gravity: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  moveForceModifier: 2
+  maxVelocityChange: 10
+  gravity: 10
   rotateSpeed: 5
 --- !u!136 &13634294
 CapsuleCollider:
@@ -565,7 +520,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179898}
-  m_Material: {fileID: 13400000, guid: 2736f24cbf601aa4ba1008bca99fe1c5, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -637,6 +592,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: Lii
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

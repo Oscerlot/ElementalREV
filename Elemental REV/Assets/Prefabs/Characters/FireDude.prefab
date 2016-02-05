@@ -108,7 +108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &161846
 GameObject:
   m_ObjectHideFlags: 1
@@ -274,10 +274,8 @@ GameObject:
   - 95: {fileID: 9553460}
   - 54: {fileID: 5488654}
   - 136: {fileID: 13624032}
-  - 114: {fileID: 11447700}
-  - 114: {fileID: 11435892}
-  - 114: {fileID: 11483254}
-  - 114: {fileID: 11475212}
+  - 114: {fileID: 11443940}
+  - 114: {fileID: 11478270}
   m_Layer: 14
   m_Name: FireDude
   m_TagString: Player
@@ -414,8 +412,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0.809, z: -0}
-  m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1.6666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453876}
   m_RootOrder: 3
@@ -438,8 +436,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3559979, y: 0.1590004, z: 0.30444324}
-  m_LocalScale: {x: 0.60000014, y: 0.6, z: 0.60000014}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462364}
   - {fileID: 483000}
@@ -636,11 +634,11 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 1.28
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11435892
+--- !u!114 &11443940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -648,18 +646,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 192004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f06791e2b6624a999845bc02c639d, type: 3}
+  m_Script: {fileID: 11500000, guid: bfac5258677c176478a5de1999ddc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 3
-  whatIsGround: {}
-  noJumpingLayers: {}
-  moveForceModifier: 2.5
-  jumpHeight: 1.1
-  maxVelocityChange: 1
-  gravity: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  moveForceModifier: 2
+  maxVelocityChange: 10
+  gravity: 10
   rotateSpeed: 5
---- !u!114 &11447700
+--- !u!114 &11478270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -667,58 +664,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 192004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bc3d7a7b0a634bb1ad8423b14f903, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff2f47e87e9f2d4ca2b920e128118fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlSetup: 0
-  isPlayer1: 0
---- !u!114 &11475212
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441c2f579991b9e468862d69a100ec46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yLimit: -20
-  otherPlayer: {fileID: 0}
---- !u!114 &11483254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22dccec58e69cd48a06bfcbf49862c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderBackground:
-    r: 1
-    g: 0.051470578
-    b: 0.051470578
-    a: 1
-  sliderFill:
-    r: 0.4044118
-    g: 0
-    b: 0
-    a: 1
-  drownSpeedModifier: 0.5
-  walkingDuration: 4
-  liquidWalkingSpeed: 1
-  drowningOffset: 0.5
-  liquidLayers: {}
-  canWalkOn: 0
 --- !u!136 &13624032
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192004}
-  m_Material: {fileID: 13400000, guid: 2736f24cbf601aa4ba1008bca99fe1c5, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -5196,6 +5151,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: Igni
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
