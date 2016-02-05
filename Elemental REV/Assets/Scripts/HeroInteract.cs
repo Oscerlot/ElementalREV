@@ -2,20 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(Collider))]
 public class HeroInteract : MonoBehaviour
 {
 
     public LayerMask whatIsInteractable;
 
-    private List<GameObject> _interactablesDetected = new List<GameObject>();
+    public GameObject CurrentInteractable {
+        get { return _currentInteractable; }
+    }
+
+
     private GameObject _currentInteractable;
+    private float _detectionSphereRadius = .40f;
+    private float _detectionSphereForwardDistance = .4f;
+    private Collider _col;
+
+    private Vector3 DetectionSpherePosition {
+        get { return _col.bounds.center + transform.forward*_detectionSphereForwardDistance; }
+    }
 
 
+    void Start()
+    {
+        _col = GetComponent<Collider>();                
+    }
 
 
     public void CheckForInteractables(PlayerInput.interactState interactState)
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward * 0.5f, .30f);
+    {        
+        Collider[] colliders = Physics.OverlapSphere(DetectionSpherePosition, _detectionSphereRadius);
         List<GameObject> interactablesDetected = FilterInteractables(colliders);
 
         // Interactable Detected
@@ -23,18 +40,35 @@ public class HeroInteract : MonoBehaviour
         {
             if (interactState == PlayerInput.interactState.begun && _currentInteractable == null)
             {
-                _currentInteractable = interactablesDetected[0].gameObject;
+                _currentInteractable = GetNearestInteractable(interactablesDetected);
             }
         }
 
         if (_currentInteractable != null)
         {
         
-            if (interactState == PlayerInput.interactState.released)
+            if (interactState == PlayerInput.interactState.ended || !interactablesDetected.Contains(_currentInteractable))
             {
                 _currentInteractable = null;              
             }
         }       
+    }
+
+
+    private GameObject GetNearestInteractable(List<GameObject> interactables)
+    {
+        GameObject nearestInteractable = interactables[0];
+        foreach (var interactable in interactables)
+        {
+            var distanceToInteractable = Vector3.Distance(interactable.transform.position, DetectionSpherePosition);
+            var distanceToNearestInteractable = Vector3.Distance(nearestInteractable.transform.position, DetectionSpherePosition);
+
+            if (distanceToInteractable < distanceToNearestInteractable)
+            {
+                nearestInteractable = interactable;
+            }
+        }
+        return nearestInteractable;
     }
 
 
@@ -46,7 +80,6 @@ public class HeroInteract : MonoBehaviour
         {
             if (whatIsInteractable == (whatIsInteractable | (1 << col.gameObject.layer)))
             {
-                Debug.Log("Interactable Detected");
                 interactables.Add(col.gameObject);
             }
         }
@@ -54,10 +87,17 @@ public class HeroInteract : MonoBehaviour
         return interactables;
     }
 
+
     void OnDrawGizmos()
     {
+        Gizmos.color = Color.red;
         if (_currentInteractable)
-            Gizmos.DrawWireCube(_currentInteractable.transform.position, Vector3.one * 3f);
+            Gizmos.DrawWireCube(_currentInteractable.transform.position, Vector3.one * 1.3f);
+
+        Gizmos.color = Color.white;
+        if (_col)
+            Gizmos.DrawWireSphere(DetectionSpherePosition, _detectionSphereRadius);
+
     }
 
 }

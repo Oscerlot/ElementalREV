@@ -151,7 +151,7 @@ namespace InControl
 			var thisPressed = thisState.State;
 
 			wasRepeated = false;
-			if (lastPressed && !thisPressed) // if was released...
+			if (lastPressed && !thisPressed) // if was ended...
 			{
 				nextRepeatTime = 0.0f;
 			}

@@ -408,9 +408,9 @@ namespace InControl
 		{
 			var mousePointerEventData = this.GetMousePointerEventData();
 			var pressed = mousePointerEventData.AnyPressesThisFrame();
-			var released = mousePointerEventData.AnyReleasesThisFrame();
+			var ended = mousePointerEventData.AnyReleasesThisFrame();
 			var eventData = mousePointerEventData.GetButtonState( PointerEventData.InputButton.Left ).eventData;
-			if (!UseMouse( pressed, released, eventData.buttonData ))
+			if (!UseMouse( pressed, ended, eventData.buttonData ))
 			{
 				return;
 			}
@@ -507,9 +507,9 @@ namespace InControl
 		}
 
 
-		static bool UseMouse( bool pressed, bool released, PointerEventData pointerData )
+		static bool UseMouse( bool pressed, bool ended, PointerEventData pointerData )
 		{
-			return pressed || released || pointerData.IsPointerMoving() || pointerData.IsScrolling();
+			return pressed || ended || pointerData.IsPointerMoving() || pointerData.IsScrolling();
 		}
 
 		#endif

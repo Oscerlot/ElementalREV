@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using InControl;
 
+[RequireComponent(typeof(PlayerInput))]
 public class HeroMove : MonoBehaviour {
 
     public LayerMask whatIsGround;

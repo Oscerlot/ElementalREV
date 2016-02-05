@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using InControl;
 
-
-[RequireComponent(typeof(HeroMove))]
 public class PlayerInput : MonoBehaviour
 {
 
@@ -12,8 +10,8 @@ public class PlayerInput : MonoBehaviour
     private HeroInteract _heroInteract;
     private Vector3 _moveInDirection;
 
-    public enum interactState { begun, beingHeld, released };
-    public interactState currentInteractState = interactState.released;
+    public enum interactState { begun, beingHeld, ended, released };
+
 
     void Start()
     {
@@ -25,43 +23,65 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        InputDevice device = InputManager.ActiveDevice;
-        if (!device)
-            return;
-
-        _moveInDirection = Vector3.zero;
-
-        //Get axis Input
-        float horizontalAxis = device.LeftStickX;
-        float verticalAxis = device.LeftStickY;
-
-        // calculate move direction to pass to the heroMovement
-        if (_cam != null)
-        {
-            // calculate camera relative direction to move:
-            _moveInDirection = verticalAxis * Vector3.Scale(_cam.forward, new Vector3(1, 0, 1)).normalized + horizontalAxis * _cam.right;
-
-        }
-        else
-        {
-            // we use world-relative directions in the case of no main camera
-            _moveInDirection = verticalAxis * Vector3.forward + horizontalAxis * Vector3.right;
-
-        }
-
-        if (device.Action1.WasReleased)
-            currentInteractState = interactState.released;
-        else if (device.Action1.WasPressed)
-            currentInteractState = interactState.begun;
-        else if (device.Action1.IsPressed)
-            currentInteractState = interactState.beingHeld;
-
-        _heroInteract.CheckForInteractables(currentInteractState);
-
+        HandleInput();
     }
 
     void FixedUpdate()
     {
-        _heroMovement.DoMovement(_moveInDirection);
+        if (_heroMovement)
+            _heroMovement.DoMovement(_moveInDirection);
     }
+
+    private void HandleInput()
+    {
+        InputDevice device = InputManager.ActiveDevice;
+
+        if (device)
+        {
+            HandleMovementInput(device);
+
+            HandleInteractionInput(device);
+        }
+    }
+
+    private void HandleMovementInput(InputDevice device)
+    {
+        //Reset direction each frame
+        _moveInDirection = Vector3.zero;
+
+        float horizontalAxis = device.LeftStickX;
+        float verticalAxis = device.LeftStickY;
+
+        //Set direction relative to camera (to world in case no camera detected)
+        if (_cam != null)
+            _moveInDirection = verticalAxis*Vector3.Scale(_cam.forward, new Vector3(1, 0, 1)).normalized +
+                               horizontalAxis*_cam.right;
+        else
+            _moveInDirection = verticalAxis*Vector3.forward + horizontalAxis*Vector3.right;
+        
+    }
+
+    private void HandleInteractionInput(InputDevice device)
+    {
+        if (_heroInteract)
+        {
+            var currentInteractState = GetCurrentInteractState(device);
+
+            if (currentInteractState != interactState.released)
+                _heroInteract.CheckForInteractables(currentInteractState);
+        }
+    }
+
+    private interactState GetCurrentInteractState(InputDevice device)
+    {
+        if (device.Action1.WasReleased)
+            return interactState.ended;
+        if (device.Action1.WasPressed)
+            return interactState.begun;
+        if (device.Action1.IsPressed)
+            return interactState.beingHeld;
+
+        return interactState.released;
+    }
+
 }
