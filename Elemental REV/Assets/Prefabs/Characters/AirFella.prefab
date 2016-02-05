@@ -269,17 +269,15 @@ GameObject:
   - 95: {fileID: 9586552}
   - 136: {fileID: 13607488}
   - 54: {fileID: 5451486}
-  - 114: {fileID: 11487162}
-  - 114: {fileID: 11425160}
-  - 114: {fileID: 11471426}
-  - 114: {fileID: 11406984}
+  - 114: {fileID: 11477860}
+  - 114: {fileID: 11441552}
   m_Layer: 13
   m_Name: AirFella
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &156256
 GameObject:
   m_ObjectHideFlags: 1
@@ -802,9 +800,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151216}
-  m_LocalRotation: {x: 0, y: 0.99650866, z: 0, w: -0.08348945}
-  m_LocalPosition: {x: -1.6039989, y: 0.10999966, z: 0.37444246}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65000004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471260}
   - {fileID: 443486}
@@ -1011,32 +1009,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11406984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441c2f579991b9e468862d69a100ec46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yLimit: -10
-  otherPlayer: {fileID: 0}
---- !u!114 &11425160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bc3d7a7b0a634bb1ad8423b14f903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlSetup: 0
-  isPlayer1: 0
 --- !u!114 &11435796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b8a85ba578e9649927348f4c2559b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11471426
+--- !u!114 &11441552
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1056,26 +1028,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 151216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22dccec58e69cd48a06bfcbf49862c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff2f47e87e9f2d4ca2b920e128118fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderBackground:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  sliderFill:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  drownSpeedModifier: 0.5
-  walkingDuration: 3
-  liquidWalkingSpeed: 1
-  drowningOffset: 0.5
-  liquidLayers: {}
-  canWalkOn: 2
---- !u!114 &11487162
+--- !u!114 &11477860
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1083,16 +1039,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 151216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f06791e2b6624a999845bc02c639d, type: 3}
+  m_Script: {fileID: 11500000, guid: bfac5258677c176478a5de1999ddc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 4
-  whatIsGround: {}
-  noJumpingLayers: {}
-  moveForceModifier: 2.5
-  jumpHeight: 1.1
-  maxVelocityChange: 1
-  gravity: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  moveForceModifier: 2
+  maxVelocityChange: 10
+  gravity: 10
   rotateSpeed: 5
 --- !u!136 &13607488
 CapsuleCollider:
@@ -1100,7 +1055,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151216}
-  m_Material: {fileID: 13400000, guid: 2736f24cbf601aa4ba1008bca99fe1c5, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

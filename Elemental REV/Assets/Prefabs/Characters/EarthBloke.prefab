@@ -569,7 +569,7 @@ GameObject:
   - 54: {fileID: 5495384}
   - 114: {fileID: 11485612}
   - 114: {fileID: 11498922}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: EarthBloke
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1015,9 +1015,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192908}
-  m_LocalRotation: {x: 0, y: 0.9999025, z: 0, w: 0.013970818}
-  m_LocalPosition: {x: 95.12, y: 1.34, z: 55.24}
-  m_LocalScale: {x: 0.5999998, y: 0.6, z: 0.5999998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421996}
   - {fileID: 476432}
@@ -1168,19 +1168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfac5258677c176478a5de1999ddc999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
-  noJumpingLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  moveForceModifier: 5.8
-  jumpHeight: 5
+  moveForceModifier: 2
   maxVelocityChange: 10
   gravity: 10
   rotateSpeed: 5
-  enableFallDamage: 0
 --- !u!114 &11498922
 MonoBehaviour:
   m_ObjectHideFlags: 1
