@@ -48,7 +48,7 @@ public class HeroMove : MonoBehaviour {
     }
 
 
-    public void DoMovement(Vector3 direction, bool interactInput)
+    public void DoMovement(Vector3 direction)
     {
 
         _animationControl.SetBool("isWalking", (direction != Vector3.zero) && _canMove);
