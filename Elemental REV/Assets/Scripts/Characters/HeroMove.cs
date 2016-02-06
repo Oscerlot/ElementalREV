@@ -14,6 +14,11 @@ public class HeroMove : MonoBehaviour {
     public float gravity = 10.0f;
     public float rotateSpeed = 5;
 
+    public bool CanMove {
+        get { return _canMove; }
+        set { _canMove = value; }
+    }
+
     private Animator _animationControl;
     private Rigidbody _rgBody;
     private CapsuleCollider _capsCollider;           //To use the centre of the collider to determine groundcheckOffset instead of the objects's centre
@@ -40,7 +45,7 @@ public class HeroMove : MonoBehaviour {
 
     void LateUpdate()
     {
-       
+       //If cant move and is grounded remove momentum
         if (!_canMove && _isGrounded && (_rgBody.velocity != Vector3.zero))
         {
             Vector3 vel = Vector3.Lerp(_rgBody.velocity, Vector3.zero, .4f);

@@ -92,7 +92,7 @@ public class HeroInteract : MonoBehaviour
     {
         Gizmos.color = Color.red;
         if (_currentInteractable)
-            Gizmos.DrawWireCube(_currentInteractable.transform.position, Vector3.one * 1.3f);
+            Gizmos.DrawWireCube(_currentInteractable.transform.position + (Vector3.up * .5f), Vector3.one * 1.3f);
 
         Gizmos.color = Color.white;
         if (_col)
