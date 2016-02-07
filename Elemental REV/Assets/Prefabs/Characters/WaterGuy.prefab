@@ -193,6 +193,7 @@ GameObject:
   - 54: {fileID: 5421034}
   - 114: {fileID: 11429468}
   - 114: {fileID: 11424008}
+  - 114: {fileID: 11475888}
   m_Layer: 10
   m_Name: WaterGuy
   m_TagString: Player
@@ -514,13 +515,27 @@ MonoBehaviour:
   maxVelocityChange: 10
   gravity: 10
   rotateSpeed: 5
+--- !u!114 &11475888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7eea68db4916d4d9f5355e6e8921df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsInteractable:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!136 &13634294
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179898}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 258428d5b3fb87a4596e9bb4a5102367, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

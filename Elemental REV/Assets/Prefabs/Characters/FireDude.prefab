@@ -276,6 +276,7 @@ GameObject:
   - 136: {fileID: 13624032}
   - 114: {fileID: 11443940}
   - 114: {fileID: 11478270}
+  - 114: {fileID: 11430788}
   m_Layer: 14
   m_Name: FireDude
   m_TagString: Player
@@ -638,6 +639,20 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11430788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7eea68db4916d4d9f5355e6e8921df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsInteractable:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &11443940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,7 +688,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192004}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 258428d5b3fb87a4596e9bb4a5102367, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

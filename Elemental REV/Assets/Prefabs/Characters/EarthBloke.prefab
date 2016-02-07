@@ -569,6 +569,8 @@ GameObject:
   - 54: {fileID: 5495384}
   - 114: {fileID: 11485612}
   - 114: {fileID: 11498922}
+  - 114: {fileID: 11477488}
+  - 114: {fileID: 11436672}
   m_Layer: 8
   m_Name: EarthBloke
   m_TagString: Player
@@ -1016,7 +1018,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421996}
@@ -1157,6 +1159,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11436672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f7816f67b855c4c9b4c4dd7648cd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11477488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7eea68db4916d4d9f5355e6e8921df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsInteractable:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &11485612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,7 +1219,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192908}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 258428d5b3fb87a4596e9bb4a5102367, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5

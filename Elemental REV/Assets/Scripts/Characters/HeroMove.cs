@@ -14,16 +14,16 @@ public class HeroMove : MonoBehaviour {
     public float gravity = 10.0f;
     public float rotateSpeed = 5;
 
-    public bool CanMove {
-        get { return _canMove; }
-        set { _canMove = value; }
+    public bool PlayerCanMoveHero {
+        get { return _playerCanMoveHero; }
+        set { _playerCanMoveHero = value; }
     }
 
     private Animator _animationControl;
     private Rigidbody _rgBody;
     private CapsuleCollider _capsCollider;           //To use the centre of the collider to determine groundcheckOffset instead of the objects's centre
 
-    private bool _canMove = true;
+    private bool _playerCanMoveHero = true;
     private const float GroundedRadius = 0.2f;
     private float _groundedOffsetDistance;
     private Vector3 _movingGroundVelocity = Vector3.zero;
@@ -46,7 +46,7 @@ public class HeroMove : MonoBehaviour {
     void LateUpdate()
     {
        //If cant move and is grounded remove momentum
-        if (!_canMove && _isGrounded && (_rgBody.velocity != Vector3.zero))
+        if (!_playerCanMoveHero && _isGrounded && (_rgBody.velocity != Vector3.zero))
         {
             Vector3 vel = Vector3.Lerp(_rgBody.velocity, Vector3.zero, .4f);
             _rgBody.velocity = vel;
@@ -55,40 +55,52 @@ public class HeroMove : MonoBehaviour {
 
 
     public void DoMovement(Vector3 direction)
-    {
-
-        _animationControl.SetBool("isWalking", (direction != Vector3.zero) && _canMove);
+    {                
+        GroundCheck();
+        
         _animationControl.SetBool("Grounded", _isGrounded);
 
-        GroundCheck();
-
-        if (_canMove)
+        if (_playerCanMoveHero)
         {
             direction *= moveForceModifier;
 
-            Vector3 velocity = _rgBody.velocity - _movingGroundVelocity;
-            Vector3 velocityChange = (direction - velocity);
+            MoveHeroTowards(direction);
 
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-
-            _rgBody.AddForce(velocityChange, ForceMode.VelocityChange);
-
-            if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotateSpeed);
-            }
+            RotateHeroTowards(direction, rotateSpeed);
 
         }
 
-        
-        // We apply gravity manually for more tuning control
-        _rgBody.AddForce(new Vector3(0, -gravity * _rgBody.mass, 0));
-        
-
-        //Reset the moveDamp modifiers
+        ApplyGravity();
+        _animationControl.SetBool("isWalking", (direction.magnitude > .2f));
         _movingGroundVelocity = Vector3.zero;
+    }
+
+    public void MoveHeroTowards(Vector3 direction)
+    {
+        _animationControl.SetBool("isWalking", (direction.magnitude > .2f));
+
+        Vector3 velocity = _rgBody.velocity - _movingGroundVelocity;
+        Vector3 velocityChange = (direction - velocity);
+
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = 0;
+
+        _rgBody.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
+
+    public void RotateHeroTowards(Vector3 direction, float rotationSpeed)
+    {
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction),
+                Time.deltaTime*rotationSpeed);
+        }
+    }
+
+    private void ApplyGravity()
+    {
+        _rgBody.AddForce(new Vector3(0, -gravity*_rgBody.mass, 0));
     }
 
     private void GroundCheck()
@@ -124,5 +136,6 @@ public class HeroMove : MonoBehaviour {
             _movingGroundVelocity = movingGround.gameObject.GetComponent<Rigidbody>().velocity;
         }
     }
+
 }
 

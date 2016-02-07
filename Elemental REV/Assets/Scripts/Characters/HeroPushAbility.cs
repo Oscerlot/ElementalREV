@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System.Net;
+using UnityEditor;
 
 public class HeroPushAbility : MonoBehaviour
 {
 
     private HeroMove _heroMove;
     private HeroInteract _heroInteract;
-    private Vector3? _targetPosition;
+    private Vector3 _targetPosition;
 
-    private CapsuleCollider col;
+    private float _attachMoveSpeed = 2f;
+    private float _attachRotateSpeed = 10f;
+
 
     void Start()
     {
         _heroMove = GetComponent<HeroMove>();
         _heroInteract = GetComponent<HeroInteract>();
-        col = GetComponent<CapsuleCollider>();
     }
 
     void Update()
@@ -32,8 +35,7 @@ public class HeroPushAbility : MonoBehaviour
 
     private void Detach()
     {
-        _heroMove.CanMove = true;
-        _targetPosition = null;
+        _heroMove.PlayerCanMoveHero = true;
     }
 
     private void AttachTo(GameObject pushable)
@@ -42,17 +44,9 @@ public class HeroPushAbility : MonoBehaviour
         pushablePos.y = transform.position.y;
         _targetPosition = pushablePos + (GetNearestAxis((transform.position - pushable.transform.position).normalized) * 1.15f);
 
-        if (PositionIsAccessible(_targetPosition.Value))
+        if (PositionIsAccessible(_targetPosition))
         {
-            _heroMove.CanMove = false;
-            transform.LookAt(pushable.transform);
-
-            if (Vector3.Distance(transform.position, _targetPosition.Value) > .1f)
-            {
-                Rigidbody rgBody = GetComponent<Rigidbody>();
-                Vector3 direction = _targetPosition.Value - transform.position;
-                rgBody.velocity = direction.normalized*2f;
-            }
+            AttachToInteractPosition(_targetPosition, pushablePos);
         }
         else
         {
@@ -60,6 +54,19 @@ public class HeroPushAbility : MonoBehaviour
         }
 
     }
+
+    private void AttachToInteractPosition(Vector3 interactPosition, Vector3 lookAtPosition)
+    {
+        _heroMove.PlayerCanMoveHero = false;
+
+        var directionToPushable = lookAtPosition - transform.position;
+        var directionToTargetPosition = (interactPosition - transform.position).normalized*_attachMoveSpeed;
+        _heroMove.RotateHeroTowards(directionToPushable, _attachRotateSpeed);
+
+        if (Vector3.Distance(transform.position, interactPosition) > .1f)
+            _heroMove.MoveHeroTowards(directionToTargetPosition);
+    }
+
 
     private bool PositionIsAccessible(Vector3 position)
     {
@@ -97,14 +104,14 @@ public class HeroPushAbility : MonoBehaviour
     void OnDrawGizmos()
     {
 
-        if (_targetPosition != null)
+        if (_heroInteract && _heroInteract.CurrentInteractable)
         {
-            if (PositionIsAccessible(_targetPosition.Value))
+            if (PositionIsAccessible(_targetPosition))
                 Gizmos.color = Color.green;
             else            
                 Gizmos.color = Color.red;
             
-            Gizmos.DrawWireCube(RoundPositionToNearestHalf(_targetPosition.Value) + (Vector3.up * .5f), new Vector3(.8f, .8f, .8f));
+            Gizmos.DrawWireCube(RoundPositionToNearestHalf(_targetPosition) + (Vector3.up * .5f), new Vector3(.8f, .8f, .8f));
             
         }
        
