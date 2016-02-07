@@ -11,6 +11,9 @@ public class HeroPushAbility : MonoBehaviour
     private HeroInteract _heroInteract;
     private Vector3 _targetPosition;
 
+    private enum AttachState { Attaching, Attached, NotAttached}
+    private AttachState _currentAttachState = AttachState.NotAttached;
+
     private float _attachMoveSpeed = 2f;
     private float _attachRotateSpeed = 10f;
 
@@ -21,7 +24,7 @@ public class HeroPushAbility : MonoBehaviour
         _heroInteract = GetComponent<HeroInteract>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))
         {
@@ -31,11 +34,7 @@ public class HeroPushAbility : MonoBehaviour
         {
             Detach();
         }
-    }
-
-    private void Detach()
-    {
-        _heroMove.PlayerCanMoveHero = true;
+        Debug.Log(_currentAttachState.ToString());
     }
 
     private void AttachTo(GameObject pushable)
@@ -55,16 +54,31 @@ public class HeroPushAbility : MonoBehaviour
 
     }
 
-    private void AttachToInteractPosition(Vector3 interactPosition, Vector3 lookAtPosition)
+    private void Detach()
     {
+        _currentAttachState = AttachState.NotAttached;
+        _heroMove.PlayerCanMoveHero = true;
+    }
+
+    private void AttachToInteractPosition(Vector3 interactPosition, Vector3 lookAtPosition)
+    {        
         _heroMove.PlayerCanMoveHero = false;
 
         var directionToPushable = lookAtPosition - transform.position;
         var directionToTargetPosition = (interactPosition - transform.position).normalized*_attachMoveSpeed;
         _heroMove.RotateHeroTowards(directionToPushable, _attachRotateSpeed);
 
-        if (Vector3.Distance(transform.position, interactPosition) > .1f)
+        if (Vector3.Distance(interactPosition, transform.position) > .02f)
+        {
+            _currentAttachState = AttachState.Attaching;
             _heroMove.MoveHeroTowards(directionToTargetPosition);
+        }
+        else if (_currentAttachState != AttachState.Attached)
+        {
+            _currentAttachState = AttachState.Attached;
+            transform.position = interactPosition;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
 
