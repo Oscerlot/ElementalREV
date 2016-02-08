@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -389131388, guid: 22246c02f513f034a9d00b4026ef40b4, type: 3}
+  m_Name: Eduardo_Test_PaletteMonoTiles
+  m_EditorClassIdentifier: 
+  keys:
+  - 212c45b5-955b-88a9-138c-985d1fe2f98d
+  - 3dcf2358-c61b-b8c5-b0ba-f17eaf6f97c5
+  - 9f2b5653-b3f1-432e-6a20-ef2e1a632541
+  - 2ae5491a-120e-b3ed-75cf-b61a877a6d55
+  values:
+  - objectName: 
+    stringID: 212c45b5-955b-88a9-138c-985d1fe2f98d
+    creationIndex: 0
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 146558, guid: b8cfb9dc379ae3f4baa469f9e539687b, type: 2}
+  - objectName: 
+    stringID: 3dcf2358-c61b-b8c5-b0ba-f17eaf6f97c5
+    creationIndex: 1
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 134482, guid: 5c17b451f8b9f3a4a82cb73b8ff0e87f, type: 2}
+  - objectName: 
+    stringID: 9f2b5653-b3f1-432e-6a20-ef2e1a632541
+    creationIndex: 2
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 138048, guid: 1d91c0d25bdfc8b41adafbf55dc3cbfc, type: 2}
+  - objectName: 
+    stringID: 2ae5491a-120e-b3ed-75cf-b61a877a6d55
+    creationIndex: 3
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 149072, guid: b907c5cc1bac31640b51e03e31091a7c, type: 2}
