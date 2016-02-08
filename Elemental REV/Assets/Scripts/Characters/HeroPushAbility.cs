@@ -9,12 +9,12 @@ public class HeroPushAbility : MonoBehaviour
 
     private HeroMove _heroMove;
     private HeroInteract _heroInteract;
+    private Animator _animationControl;
     private Vector3 _targetPosition;
 
     private enum AttachState { Attaching, Attached, NotAttached}
     private AttachState _currentAttachState = AttachState.NotAttached;
 
-    private float _attachMoveSpeed = 2f;
     private float _attachRotateSpeed = 10f;
 
 
@@ -22,36 +22,27 @@ public class HeroPushAbility : MonoBehaviour
     {
         _heroMove = GetComponent<HeroMove>();
         _heroInteract = GetComponent<HeroInteract>();
+        _animationControl = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))
-        {
-            AttachTo(_heroInteract.CurrentInteractable);
-        }
-        else
-        {
-            Detach();
-        }
-        Debug.Log(_currentAttachState.ToString());
+        if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))        
+            AttachTo(_heroInteract.CurrentInteractable);        
+        else        
+            Detach();                
     }
 
     private void AttachTo(GameObject pushable)
     {
         Vector3 pushablePos = pushable.transform.position;
         pushablePos.y = transform.position.y;
-        _targetPosition = pushablePos + (GetNearestAxis((transform.position - pushable.transform.position).normalized) * 1.15f);
+        _targetPosition = pushablePos + (GetNearestAxis((transform.position - pushable.transform.position).normalized));
 
-        if (PositionIsAccessible(_targetPosition))
-        {
-            AttachToInteractPosition(_targetPosition, pushablePos);
-        }
-        else
-        {
-            Detach();
-        }
-
+        if (PositionIsAccessible(_targetPosition))        
+            AttachToInteractPosition(_targetPosition, pushablePos);        
+        else        
+            Detach();        
     }
 
     private void Detach()
@@ -64,10 +55,11 @@ public class HeroPushAbility : MonoBehaviour
     {        
         _heroMove.PlayerCanMoveHero = false;
 
-        var directionToPushable = lookAtPosition - transform.position;
-        var directionToTargetPosition = (interactPosition - transform.position).normalized*_attachMoveSpeed;
+        var directionToPushable = (lookAtPosition - transform.position);
+        var directionToTargetPosition = (interactPosition - transform.position).normalized;
         _heroMove.RotateHeroTowards(directionToPushable, _attachRotateSpeed);
 
+        //Have we reached the target position and are we facing the pushable?
         if (Vector3.Distance(interactPosition, transform.position) > .02f)
         {
             _currentAttachState = AttachState.Attaching;
@@ -76,8 +68,9 @@ public class HeroPushAbility : MonoBehaviour
         else if (_currentAttachState != AttachState.Attached)
         {
             _currentAttachState = AttachState.Attached;
+            _heroMove.ResetVelocity();
             transform.position = interactPosition;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    
         }
     }
 

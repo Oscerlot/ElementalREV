@@ -30,7 +30,7 @@ public class HeroInteract : MonoBehaviour
     }
 
 
-    public void CheckForInteractables(PlayerInput.interactState interactState)
+    public void CheckForInteractables(PlayerInput.InteractState interactState)
     {        
         Collider[] colliders = Physics.OverlapSphere(DetectionSpherePosition, _detectionSphereRadius);
         List<GameObject> interactablesDetected = FilterInteractables(colliders);
@@ -38,7 +38,7 @@ public class HeroInteract : MonoBehaviour
         // Interactable Detected
         if (interactablesDetected.Count > 0)
         {
-            if (interactState == PlayerInput.interactState.begun && _currentInteractable == null)
+            if (interactState == PlayerInput.InteractState.Begun && _currentInteractable == null)
             {
                 _currentInteractable = GetNearestInteractable(interactablesDetected);
             }
@@ -47,7 +47,7 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable != null)
         {
         
-            if (interactState == PlayerInput.interactState.ended || !interactablesDetected.Contains(_currentInteractable))
+            if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable))
             {
                 _currentInteractable = null;              
             }

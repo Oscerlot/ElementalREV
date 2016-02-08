@@ -26,11 +26,10 @@ public class HeroMove : MonoBehaviour {
     private bool _playerCanMoveHero = true;
     private const float GroundedRadius = 0.2f;
     private float _groundedOffsetDistance;
-    private Vector3 _movingGroundVelocity = Vector3.zero;
+    private float _moveSpeed = 0;
     private bool _isGrounded;
+    private Vector3 _movingGroundVelocity = Vector3.zero;
     private const string MOVING_GROUND_LAYER_NAME = "MovingGround";
-
-    private Vector3 _groundDetectPos;
 
     void Start()
     {
@@ -42,42 +41,37 @@ public class HeroMove : MonoBehaviour {
 
     }
 
-
-    void LateUpdate()
+    void Update()
     {
-       //If cant move and is grounded remove momentum
-        if (!_playerCanMoveHero && _isGrounded && (_rgBody.velocity != Vector3.zero))
+        GroundCheck();
+        _animationControl.SetBool("Grounded", _isGrounded);
+        _animationControl.SetFloat("MoveSpeed", _moveSpeed);        
+    }
+
+    void FixedUpdate()
+    {       
+        ApplyGravity();
+    }
+
+    public void ReceivePlayerMovementInput(Vector3 direction)
+    {
+        if (_playerCanMoveHero)
         {
-            Vector3 vel = Vector3.Lerp(_rgBody.velocity, Vector3.zero, .4f);
-            _rgBody.velocity = vel;
+            MoveHeroTowards(direction);
+            RotateHeroTowards(direction, rotateSpeed);
         }
     }
 
-
-    public void DoMovement(Vector3 direction)
-    {                
-        GroundCheck();
-        
-        _animationControl.SetBool("Grounded", _isGrounded);
-
-        if (_playerCanMoveHero)
-        {
-            direction *= moveForceModifier;
-
-            MoveHeroTowards(direction);
-
-            RotateHeroTowards(direction, rotateSpeed);
-
-        }
-
-        ApplyGravity();
-        _animationControl.SetBool("isWalking", (direction.magnitude > .2f));
-        _movingGroundVelocity = Vector3.zero;
+    public void ResetVelocity()
+    {
+        _moveSpeed = 0f;
+        _rgBody.velocity = Vector3.zero;
     }
 
     public void MoveHeroTowards(Vector3 direction)
     {
-        _animationControl.SetBool("isWalking", (direction.magnitude > .2f));
+        direction *= moveForceModifier;
+        _moveSpeed = direction.magnitude;
 
         Vector3 velocity = _rgBody.velocity - _movingGroundVelocity;
         Vector3 velocityChange = (direction - velocity);
@@ -87,6 +81,8 @@ public class HeroMove : MonoBehaviour {
         velocityChange.y = 0;
 
         _rgBody.AddForce(velocityChange, ForceMode.VelocityChange);
+
+        _movingGroundVelocity = Vector3.zero;
     }
 
     public void RotateHeroTowards(Vector3 direction, float rotationSpeed)

@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
     private HeroInteract _heroInteract;
     private Vector3 _moveInDirection;
 
-    public enum interactState { begun, beingHeld, ended, released };
+    public enum InteractState { Begun, BeingHeld, Ended, Released };
 
 
     void Start()
@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate()
     {
         if (_heroMovement)
-            _heroMovement.DoMovement(_moveInDirection);
+            _heroMovement.ReceivePlayerMovementInput(_moveInDirection);
     }
 
     private void HandleInput()
@@ -67,21 +67,21 @@ public class PlayerInput : MonoBehaviour
         {
             var currentInteractState = GetCurrentInteractState(device);
 
-            if (currentInteractState != interactState.released)
+            if (currentInteractState != InteractState.Released)
                 _heroInteract.CheckForInteractables(currentInteractState);
         }
     }
 
-    private interactState GetCurrentInteractState(InputDevice device)
+    private InteractState GetCurrentInteractState(InputDevice device)
     {
         if (device.Action1.WasReleased)
-            return interactState.ended;
+            return InteractState.Ended;
         if (device.Action1.WasPressed)
-            return interactState.begun;
+            return InteractState.Begun;
         if (device.Action1.IsPressed)
-            return interactState.beingHeld;
+            return InteractState.BeingHeld;
 
-        return interactState.released;
+        return InteractState.Released;
     }
 
 }
