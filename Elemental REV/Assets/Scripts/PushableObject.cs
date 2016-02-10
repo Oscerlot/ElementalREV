@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
-public class PushableObject : Interactable, IAttachable {
+public class PushableObject : Interactable {
 
-    List<Vector3> validAttachPositions = new List<Vector3>(); 
+    readonly List<Vector3> _attachPositions = new List<Vector3>(); 
 
-	// Use this for initialization
 	void Start ()
 	{
 	    tag = "Pushable";
@@ -16,40 +14,20 @@ public class PushableObject : Interactable, IAttachable {
 
     private void LoadValidAttachPositions()
     {
-        validAttachPositions.Add(transform.position + Vector3.forward);
-        validAttachPositions.Add(transform.position + -Vector3.forward);
-        validAttachPositions.Add(transform.position + Vector3.right);
-        validAttachPositions.Add(transform.position + -Vector3.right);
+        _attachPositions.Add(transform.position + Vector3.forward);
+        _attachPositions.Add(transform.position + -Vector3.forward);
+        _attachPositions.Add(transform.position + Vector3.right);
+        _attachPositions.Add(transform.position + -Vector3.right);
     }
 
-    public Vector3 GetAttachPosition(Transform goAttachingToAttachable)
+    protected override List<Vector3> GetInteractPosition()
     {
-        return FindNearestAttachPosition(goAttachingToAttachable);
-    }
-
-    public Vector3 GetLookAtPosition()
-    {
-        return transform.position;
-    }
-
-    private Vector3 FindNearestAttachPosition(Transform goAttachingToAttachable)
-    {
-        var nearestAttachPosition = validAttachPositions[0];
-        foreach (var validAttachPosition in validAttachPositions)
-        {
-            var distanceToCurrent = Vector3.Distance(validAttachPosition, goAttachingToAttachable.position);
-            var distanceToNearest = Vector3.Distance(nearestAttachPosition, goAttachingToAttachable.position);
-
-            if (distanceToCurrent < distanceToNearest)
-                nearestAttachPosition = validAttachPosition;
-        }
-
-        return nearestAttachPosition;
+        return _attachPositions;
     }
 
     void OnDrawGizmosSelected()
     {
-        foreach (var validAttachPosition in validAttachPositions)
+        foreach (var validAttachPosition in _attachPositions)
         {
             Gizmos.DrawWireCube(validAttachPosition + (Vector3.up * .5f), new Vector3(.8f, .8f, .8f));
         }

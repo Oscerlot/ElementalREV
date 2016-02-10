@@ -68,7 +68,7 @@ public class PlayerInput : MonoBehaviour
             var currentInteractState = GetCurrentInteractState(device);
 
             if (currentInteractState != InteractState.Released)
-                _heroInteract.CheckForInteractables(currentInteractState);
+                _heroInteract.ReceivePlayerInteractInput(currentInteractState);
         }
     }
 
