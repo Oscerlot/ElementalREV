@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using InControl;
@@ -133,5 +134,22 @@ public class HeroMove : MonoBehaviour {
         }
     }
 
+    public void MoveHeroTo(Vector3 destination, Action destinationReached)
+    {
+        PlayerCanMoveHero = false;
+        var directionToTargetPosition = (destination - transform.position).normalized;        
+
+        //Have we reached the target position?
+        if (Vector3.Distance(destination, transform.position) > .02f)
+        {
+            MoveHeroTowards(directionToTargetPosition);
+        }
+        else 
+        {
+            destinationReached.Invoke();
+            ResetVelocity();
+            transform.position = destination;
+        }
+    }
 }
 

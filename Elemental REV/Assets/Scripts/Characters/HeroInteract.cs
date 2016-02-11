@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,12 @@ public class HeroInteract : MonoBehaviour
     public Interactable CurrentInteractable {
         get
         {
-            if (_currentAttachState == AttachState.Attached)
+            if (currentAttachState == AttachState.Attached)
                 return _currentInteractable;
             else
                 return null;
         }
     }
-
 
     private Interactable _currentInteractable;
     private float _detectionSphereRadius = .40f;
@@ -27,8 +27,8 @@ public class HeroInteract : MonoBehaviour
     private Collider _col;
 
     private HeroMove _heroMove;
-    private enum AttachState { Attaching, Attached, Detached }
-    private AttachState _currentAttachState = AttachState.Detached;
+    public enum AttachState { Attaching, Attached, Detached }
+    public AttachState currentAttachState = AttachState.Detached;
 
     private float _attachRotateSpeed = 10f;
 
@@ -73,7 +73,7 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable != null)
         {
             if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable) 
-                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), new []{gameObject}))
+                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), new []{gameObject, _currentInteractable.gameObject}))
             {
                 DetachHero();
             }
@@ -118,13 +118,31 @@ public class HeroInteract : MonoBehaviour
 
 
 
-    private void AttachHeroTo(Interactable attachable)
+    private void AttachHeroTo(Interactable interactable)
     {
-        var targetPosition = FindNearestAttachPosition(attachable.InteractPositions);
+        var targetPosition = FindNearestAttachPosition(interactable.InteractPositions);
+        var objectsToIgnore = new[] {gameObject, _currentInteractable.gameObject};
 
-        if (GridTools.Instance.PositionIsAccessible(targetPosition, new []{gameObject}) && _currentAttachState != AttachState.Attached)
-            MoveToInteractPosition(targetPosition, attachable.InteractLookAtPosition);
+        if (GridTools.Instance.PositionIsAccessible(targetPosition, objectsToIgnore))
+        {
+            if (currentAttachState != AttachState.Attached)
+            {
+                currentAttachState = AttachState.Attaching;
+                _heroMove.MoveHeroTo(targetPosition, OnAttachPositionReached);
+            }
+            _heroMove.RotateHeroTowards(interactable.InteractLookAtPosition - transform.position, _attachRotateSpeed);
+        }
 
+    }
+
+    public void DetachHero()
+    {
+        if (currentAttachState != AttachState.Detached)
+        {
+            currentAttachState = AttachState.Detached;
+            _heroMove.PlayerCanMoveHero = true;
+            _currentInteractable = null;
+        }
     }
 
     private Vector3 FindNearestAttachPosition(List<Vector3> attachPositions)
@@ -143,38 +161,9 @@ public class HeroInteract : MonoBehaviour
         return nearestAttachPosition;
     }
 
-    private void DetachHero()
+    private void OnAttachPositionReached()
     {
-        if (_currentAttachState != AttachState.Detached)
-        {
-            Debug.Log("Detach Hero");
-            _currentAttachState = AttachState.Detached;
-            _heroMove.PlayerCanMoveHero = true;
-            _currentInteractable = null;
-        }
-    }
-
-    private void MoveToInteractPosition(Vector3 interactPosition, Vector3 lookAtPosition)
-    {
-        _heroMove.PlayerCanMoveHero = false;
-
-        var directionToPushable = (lookAtPosition - transform.position);
-        var directionToTargetPosition = (interactPosition - transform.position).normalized;
-        _heroMove.RotateHeroTowards(directionToPushable, _attachRotateSpeed);
-
-        //Have we reached the target position and are we facing the attachable?
-        if (Vector3.Distance(interactPosition, transform.position) > .02f)
-        {
-            _currentAttachState = AttachState.Attaching;
-            _heroMove.MoveHeroTowards(directionToTargetPosition);
-        }
-        else if (_currentAttachState != AttachState.Attached)
-        {
-            _currentAttachState = AttachState.Attached;
-            _heroMove.ResetVelocity();
-            transform.position = interactPosition;
-
-        }
+        currentAttachState = AttachState.Attached;        
     }
 
 
@@ -189,7 +178,7 @@ public class HeroInteract : MonoBehaviour
 
     private void HighlightAttachTargetPos()
     {
-        if (_currentInteractable)
+        if (_currentInteractable && Application.isPlaying)
         {
             var targetPosition = FindNearestAttachPosition(_currentInteractable.InteractPositions);
             if (GridTools.Instance.PositionIsAccessible(targetPosition, new []{gameObject, _currentInteractable.gameObject}))

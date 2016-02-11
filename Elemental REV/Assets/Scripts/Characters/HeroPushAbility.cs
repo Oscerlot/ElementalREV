@@ -4,13 +4,12 @@ using UnityEngine;
 public class HeroPushAbility : MonoBehaviour
 {
 
-    public GameObject[] objectsToIgnore;//TODO: this is just for debug remove as soon as finished
-
     private HeroInteract _heroInteract;
     private Animator _animationControl;
     private HeroMove _heroMove;
 
     private PushableObject _pushable;
+    private Vector3 _destination;
     private bool _pushing = false;
 
     void Start()
@@ -23,16 +22,24 @@ public class HeroPushAbility : MonoBehaviour
 
     void Update()
     {
-        //if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))
-        //{
-        //    _pushable = (PushableObject)_heroInteract.CurrentInteractable;
-        //    _animationControl.SetBool("isPushing", true);
-        //}
-        //else if (!_pushing)
-        //{
-        //    _pushable = null;
-        //    _animationControl.SetBool("isPushing", false);
-        //}
+        if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))
+        {
+            if (!_pushable)
+            {
+                Debug.Log("Found a motherfucking pushable");
+                _pushable = (PushableObject) _heroInteract.CurrentInteractable;
+                _pushable.transform.SetParent(transform);
+                _destination = _pushable.transform.position;
+                _animationControl.SetBool("isPushing", true);
+            }
+        }
+        else if (!_pushing && _pushable)
+        {
+            Debug.Log("No longer pushing");
+            _pushable.transform.SetParent(null);
+            _pushable = null;
+            _animationControl.SetBool("isPushing", false);
+        }
 
     }
 
@@ -40,43 +47,20 @@ public class HeroPushAbility : MonoBehaviour
     {
         if (_pushable)
         {
-            //_heroMove.PlayerCanMoveHero = false;
-            var targetPos = _pushable.transform.position;
-
-            _pushable.transform.SetParent(transform);
-
-            if (!_pushing)
+            if (transform.position != _destination)
             {
-                MoveTo(targetPos);
+                _pushing = true;
+                Debug.Log(_destination);
+                _heroMove.MoveHeroTo(_destination, OnFinishedMoving);                
             }
 
-            Debug.DrawLine(transform.position, targetPos, Color.red);
-        }
-    }
-
-    private void MoveTo(Vector3 interactPosition)
-    {
-        _heroMove.PlayerCanMoveHero = false;
-
-        var directionToTargetPosition = (interactPosition - transform.position).normalized;
-
-        if (Vector3.Distance(interactPosition, transform.position) > .1f)
-        {
-            _pushing = true;
-            _heroMove.MoveHeroTowards(directionToTargetPosition);
-        }
-        else
-        {
-            Debug.Log("Stahp");
-            _pushing = false;
-            _heroMove.ResetVelocity();
-            transform.position = interactPosition;
         }
     }
 
     private void OnFinishedMoving()
     {
         _pushing = false;
+        _heroMove.PlayerCanMoveHero = true;
         _pushable.transform.SetParent(null);
     }
 
@@ -87,7 +71,10 @@ public class HeroPushAbility : MonoBehaviour
             Gizmos.DrawWireCube(_heroInteract.CurrentInteractable.transform.position + (Vector3.up * .5f), Vector3.one * 1.25f);
 
 
-        if (GridTools.Instance.PositionIsAccessible(GridTools.Instance.SnapVectorToGrid(transform.position), objectsToIgnore))
+        if (!Application.isPlaying)
+            return;
+
+        if (GridTools.Instance.PositionIsAccessible(GridTools.Instance.SnapVectorToGrid(transform.position), new []{gameObject}))
             Gizmos.color = Color.green;
         else
             Gizmos.color = Color.red;

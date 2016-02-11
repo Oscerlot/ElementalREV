@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridTools : MonoBehaviour
@@ -43,15 +44,16 @@ public class GridTools : MonoBehaviour
     public bool PositionIsAccessible(Vector3 position, GameObject [] gameObjectsToIgnore)
     {
         Vector3 newPos = SnapVectorToGrid(position);
-        Collider[] collidingObjects = Physics.OverlapBox(newPos, new Vector3(.4f, .4f, .4f), Quaternion.identity);
-        bool positionIsAccessible = false;
+        List <Collider> collidersDetected = new List<Collider>(Physics.OverlapBox(newPos, new Vector3(.4f, .4f, .4f), Quaternion.identity));
+        List <GameObject> goDetected = new List<GameObject>();
+        collidersDetected.ForEach(col => goDetected.Add(col.gameObject));
 
-        foreach (var go in gameObjectsToIgnore)
+        foreach (var go in gameObjectsToIgnore.Where(go => goDetected.Contains(go)))
         {
-            positionIsAccessible = !(collidingObjects.Length > 0 && collidingObjects.Any(collidingObject => !collidingObject.gameObject.Equals(go)));
+            goDetected.Remove(go);
         }
 
-        return positionIsAccessible;
+        return (goDetected.Count <= 0);
 
     }
 
