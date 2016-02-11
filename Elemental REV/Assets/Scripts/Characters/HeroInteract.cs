@@ -13,7 +13,7 @@ public class HeroInteract : MonoBehaviour
     public Interactable CurrentInteractable {
         get
         {
-            if (_interactableIsReady)
+            if (_currentAttachState == AttachState.Attached)
                 return _currentInteractable;
             else
                 return null;
@@ -25,11 +25,10 @@ public class HeroInteract : MonoBehaviour
     private float _detectionSphereRadius = .40f;
     private float _detectionSphereForwardDistance = .4f;
     private Collider _col;
-    private bool _interactableIsReady = false;
 
     private HeroMove _heroMove;
-    private enum AttachState { Attaching, Attached, NotAttached }
-    private AttachState _currentAttachState = AttachState.NotAttached;
+    private enum AttachState { Attaching, Attached, Detached }
+    private AttachState _currentAttachState = AttachState.Detached;
 
     private float _attachRotateSpeed = 10f;
 
@@ -54,6 +53,7 @@ public class HeroInteract : MonoBehaviour
     public void ReceivePlayerInteractInput(PlayerInput.InteractState interactState)
     {
         CheckForInteractables(interactState);
+
     }
 
     private void CheckForInteractables(PlayerInput.InteractState interactState)
@@ -72,10 +72,10 @@ public class HeroInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
-            if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable))
+            if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable) 
+                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), gameObject))
             {
                 DetachHero();
-                _currentInteractable = null;
             }
         }
     }
@@ -83,16 +83,19 @@ public class HeroInteract : MonoBehaviour
 
     private Interactable GetNearestInteractable(List<Interactable> interactables)
     {
+        if (interactables.Count <= 0)
+            return null;
+
         Interactable nearestInteractable = interactables[0];
+
         foreach (var interactable in interactables)
         {
             var distanceToInteractable = Vector3.Distance(interactable.transform.position, DetectionSpherePosition);
             var distanceToNearestInteractable = Vector3.Distance(nearestInteractable.transform.position, DetectionSpherePosition);
 
             if (distanceToInteractable < distanceToNearestInteractable)
-            {
                 nearestInteractable = interactable;
-            }
+
         }
         return nearestInteractable;
     }
@@ -118,7 +121,8 @@ public class HeroInteract : MonoBehaviour
     private void AttachHeroTo(Interactable attachable)
     {
         var targetPosition = FindNearestAttachPosition(attachable.InteractPositions);
-        if (PositionIsAccessible(targetPosition))
+
+        if (GridTools.Instance.PositionIsAccessible(targetPosition, gameObject) && _currentAttachState != AttachState.Attached)
             MoveToInteractPosition(targetPosition, attachable.InteractLookAtPosition);
 
     }
@@ -141,8 +145,13 @@ public class HeroInteract : MonoBehaviour
 
     private void DetachHero()
     {
-        _currentAttachState = AttachState.NotAttached;
-        _heroMove.PlayerCanMoveHero = true;
+        if (_currentAttachState != AttachState.Detached)
+        {
+            Debug.Log("Detach Hero");
+            _currentAttachState = AttachState.Detached;
+            _heroMove.PlayerCanMoveHero = true;
+            _currentInteractable = null;
+        }
     }
 
     private void MoveToInteractPosition(Vector3 interactPosition, Vector3 lookAtPosition)
@@ -163,32 +172,19 @@ public class HeroInteract : MonoBehaviour
         {
             _currentAttachState = AttachState.Attached;
             _heroMove.ResetVelocity();
-            Debug.Log("Attached!");
             transform.position = interactPosition;
 
         }
     }
 
 
-    private bool PositionIsAccessible(Vector3 position)
-    {        
-        Vector3 newPos = position + (Vector3.up * .5f);
-        Collider[] collidingObjects = Physics.OverlapBox(newPos, new Vector3(.4f, .4f, .4f), Quaternion.identity);
-
-        return !(collidingObjects.Length > 0 && collidingObjects.Any(collidingObject => !collidingObject.gameObject.Equals(gameObject)));
-
-    }
-
 #region Gizmos
 
     void OnDrawGizmos()
     {
-        HighlightCurrentInteractable();
-
         DisplayDetectionRange();
 
         HighlightAttachTargetPos();
-
     }
 
     private void HighlightAttachTargetPos()
@@ -196,13 +192,12 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable)
         {
             var targetPosition = FindNearestAttachPosition(_currentInteractable.InteractPositions);
-            if (PositionIsAccessible(targetPosition))
+            if (GridTools.Instance.PositionIsAccessible(targetPosition, gameObject))
                 Gizmos.color = Color.green;
             else
                 Gizmos.color = Color.red;
 
-            Gizmos.DrawWireCube(targetPosition + (Vector3.up*.5f),
-                new Vector3(.8f, .8f, .8f));
+            Gizmos.DrawWireCube(GridTools.Instance.SnapVectorToGrid(targetPosition), new Vector3(.8f, .8f, .8f));
         }
     }
 
@@ -211,13 +206,6 @@ public class HeroInteract : MonoBehaviour
         Gizmos.color = Color.white;
         if (_col)
             Gizmos.DrawWireSphere(DetectionSpherePosition, _detectionSphereRadius);
-    }
-
-    private void HighlightCurrentInteractable()
-    {
-        Gizmos.color = Color.red;
-        if (_currentInteractable)
-            Gizmos.DrawWireCube(_currentInteractable.transform.position + (Vector3.up*.5f), Vector3.one*1.3f);
     }
 
 #endregion

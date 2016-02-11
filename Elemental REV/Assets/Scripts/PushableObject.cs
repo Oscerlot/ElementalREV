@@ -3,25 +3,24 @@ using System.Collections.Generic;
 
 public class PushableObject : Interactable {
 
-    readonly List<Vector3> _attachPositions = new List<Vector3>(); 
+    private List<Vector3> _attachPositions = new List<Vector3>(); 
 
 	void Start ()
 	{
 	    tag = "Pushable";
 	    gameObject.layer = LayerMask.NameToLayer("Interactable");
-        LoadValidAttachPositions();
 	}
-
-    private void LoadValidAttachPositions()
-    {
-        _attachPositions.Add(transform.position + Vector3.forward);
-        _attachPositions.Add(transform.position + -Vector3.forward);
-        _attachPositions.Add(transform.position + Vector3.right);
-        _attachPositions.Add(transform.position + -Vector3.right);
-    }
 
     protected override List<Vector3> GetInteractPosition()
     {
+        var list = new List<Vector3>()
+        {
+            transform.position + Vector3.forward,
+            transform.position + -Vector3.forward,
+            transform.position + Vector3.right,
+            transform.position + -Vector3.right
+        };
+        _attachPositions = new List<Vector3>(list);
         return _attachPositions;
     }
 

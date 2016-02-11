@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
-public class Interactable : MonoBehaviour {
+public abstract class Interactable : MonoBehaviour {
 
     //The position/s the hero must reach before interacting with the interactable
     public List<Vector3> InteractPositions
@@ -16,11 +15,8 @@ public class Interactable : MonoBehaviour {
         get { return GetInteractLookAtPosition(); }
     }
 
-    //TODO: Fix Bug, this throws a out of bounds index error if not overriten by pushable object
-    protected virtual List <Vector3> GetInteractPosition()
-    {
-        return new List<Vector3>();
-    }
+    protected abstract List<Vector3> GetInteractPosition();
+   
 
     protected virtual Vector3 GetInteractLookAtPosition()
     {
