@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class HeroPushAbility : MonoBehaviour
 {
+
+    public GameObject[] objectsToIgnore;//TODO: this is just for debug remove as soon as finished
+
     private HeroInteract _heroInteract;
     private Animator _animationControl;
     private HeroMove _heroMove;
@@ -30,7 +33,7 @@ public class HeroPushAbility : MonoBehaviour
         //    _pushable = null;
         //    _animationControl.SetBool("isPushing", false);
         //}
-            
+
     }
 
     void FixedUpdate()
@@ -82,6 +85,16 @@ public class HeroPushAbility : MonoBehaviour
         Gizmos.color = Color.blue;
         if (_heroInteract && _heroInteract.CurrentInteractable)
             Gizmos.DrawWireCube(_heroInteract.CurrentInteractable.transform.position + (Vector3.up * .5f), Vector3.one * 1.25f);
+
+
+        if (GridTools.Instance.PositionIsAccessible(GridTools.Instance.SnapVectorToGrid(transform.position), objectsToIgnore))
+            Gizmos.color = Color.green;
+        else
+            Gizmos.color = Color.red;
+
+        Gizmos.DrawWireCube(GridTools.Instance.SnapVectorToGrid(transform.position), Vector3.one);
+
+
     }
 
 }

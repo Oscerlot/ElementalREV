@@ -73,7 +73,7 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable != null)
         {
             if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable) 
-                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), gameObject))
+                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), new []{gameObject}))
             {
                 DetachHero();
             }
@@ -122,7 +122,7 @@ public class HeroInteract : MonoBehaviour
     {
         var targetPosition = FindNearestAttachPosition(attachable.InteractPositions);
 
-        if (GridTools.Instance.PositionIsAccessible(targetPosition, gameObject) && _currentAttachState != AttachState.Attached)
+        if (GridTools.Instance.PositionIsAccessible(targetPosition, new []{gameObject}) && _currentAttachState != AttachState.Attached)
             MoveToInteractPosition(targetPosition, attachable.InteractLookAtPosition);
 
     }
@@ -192,7 +192,7 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable)
         {
             var targetPosition = FindNearestAttachPosition(_currentInteractable.InteractPositions);
-            if (GridTools.Instance.PositionIsAccessible(targetPosition, gameObject))
+            if (GridTools.Instance.PositionIsAccessible(targetPosition, new []{gameObject, _currentInteractable.gameObject}))
                 Gizmos.color = Color.green;
             else
                 Gizmos.color = Color.red;

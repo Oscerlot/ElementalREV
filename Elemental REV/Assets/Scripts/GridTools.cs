@@ -40,12 +40,18 @@ public class GridTools : MonoBehaviour
     private readonly Vector3 GridOffset = new Vector3(.5f,.5f,.5f);
 
 
-    public bool PositionIsAccessible(Vector3 position, GameObject gameObjectToIgnore)
+    public bool PositionIsAccessible(Vector3 position, GameObject [] gameObjectsToIgnore)
     {
         Vector3 newPos = SnapVectorToGrid(position);
         Collider[] collidingObjects = Physics.OverlapBox(newPos, new Vector3(.4f, .4f, .4f), Quaternion.identity);
+        bool positionIsAccessible = false;
 
-        return !(collidingObjects.Length > 0 && collidingObjects.Any(collidingObject => !collidingObject.gameObject.Equals(gameObjectToIgnore)));
+        foreach (var go in gameObjectsToIgnore)
+        {
+            positionIsAccessible = !(collidingObjects.Length > 0 && collidingObjects.Any(collidingObject => !collidingObject.gameObject.Equals(go)));
+        }
+
+        return positionIsAccessible;
 
     }
 
