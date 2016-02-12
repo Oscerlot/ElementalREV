@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
     private HeroInteract _heroInteract;
     private Vector3 _moveInDirection;
 
-    public enum InteractState { Begun, BeingHeld, Ended, Released };
+    public enum InteractState { Begun, BeingHeld, Released, Inactive };
 
 
     void Start()
@@ -67,21 +67,20 @@ public class PlayerInput : MonoBehaviour
         {
             var currentInteractState = GetCurrentInteractState(device);
 
-            if (currentInteractState != InteractState.Released)
-                _heroInteract.ReceivePlayerInteractInput(currentInteractState);
+            _heroInteract.ReceivePlayerInteractInput(currentInteractState);
         }
     }
 
     private InteractState GetCurrentInteractState(InputDevice device)
     {
         if (device.Action1.WasReleased)
-            return InteractState.Ended;
+            return InteractState.Released;
         if (device.Action1.WasPressed)
             return InteractState.Begun;
         if (device.Action1.IsPressed)
             return InteractState.BeingHeld;
 
-        return InteractState.Released;
+        return InteractState.Inactive;
     }
 
 }

@@ -63,7 +63,7 @@ public class HeroInteract : MonoBehaviour
 
         // Interactable Detected
         if (interactablesDetected.Count > 0)
-        {
+        {            
             if (interactState == PlayerInput.InteractState.Begun && _currentInteractable == null)
             {
                 _currentInteractable = GetNearestInteractable(interactablesDetected);
@@ -72,12 +72,21 @@ public class HeroInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
-            if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable) 
-                || !GridTools.Instance.PositionIsAccessible(FindNearestPositionToPlayer(_currentInteractable.InteractPositions), new []{gameObject, _currentInteractable.gameObject}))
-            {
+            if ((InteractButtonReleasedWhileAttaching(interactState)) || !interactablesDetected.Contains(_currentInteractable) || !TargetGridPositionIsAccessible())
+            {                                 
                 DetachHero();
             }
         }
+    }
+
+    private bool InteractButtonReleasedWhileAttaching(PlayerInput.InteractState interactState)
+    {
+        return currentAttachState == AttachState.Attaching && interactState == PlayerInput.InteractState.Released;
+    }
+
+    private bool TargetGridPositionIsAccessible()
+    {
+        return GridTools.Instance.PositionIsAccessible(FindNearestPositionToPlayer(_currentInteractable.InteractPositions), new[] { gameObject, _currentInteractable.gameObject });
     }
 
 
@@ -153,12 +162,11 @@ public class HeroInteract : MonoBehaviour
 
     public void DetachHero()
     {
-        if (currentAttachState != AttachState.Detached)
-        {
-            currentAttachState = AttachState.Detached;
-            _heroMove.PlayerCanMoveHero = true;
-            _currentInteractable = null;
-        }
+        Debug.Log("Detach");
+        currentAttachState = AttachState.Detached;
+        _heroMove.PlayerCanMoveHero = true;
+        _currentInteractable = null;
+ 
     }
 
     private void OnAttachPositionReached()

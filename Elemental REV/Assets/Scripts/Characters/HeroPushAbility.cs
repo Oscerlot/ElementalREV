@@ -22,7 +22,7 @@ public class HeroPushAbility : MonoBehaviour
 
     void Update()
     {
-        //CheckForPushables();
+        CheckForPushables();
     }
 
     private void CheckForPushables()
@@ -31,17 +31,17 @@ public class HeroPushAbility : MonoBehaviour
         {
             if (!_pushable)
             {
-                Debug.Log("Found a motherfucking pushable");
+                //Debug.Log("Found a motherfucking pushable");
                 _pushable = (PushableObject) _heroInteract.CurrentInteractable;
-                _pushable.transform.SetParent(transform);
-                _destination = _pushable.transform.position;
+                //_pushable.transform.SetParent(transform);
+                //_destination = _pushable.transform.position;
                 _animationControl.SetBool("isPushing", true);
             }
         }
-        else if (!_pushing && _pushable)
+        else if (_pushable)
         {
-            Debug.Log("No longer pushing");
-            _pushable.transform.SetParent(null);
+            //Debug.Log("No longer pushing");
+            //_pushable.transform.SetParent(null);
             _pushable = null;
             _animationControl.SetBool("isPushing", false);
         }
@@ -49,22 +49,23 @@ public class HeroPushAbility : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_pushable)
-        {
-            if (transform.position != _destination)
-            {
-                _pushing = true;
-                Debug.Log(_destination);
-                _heroMove.MoveHeroTo(_destination, OnFinishedMoving);                
-            }
+        //if (_pushable)
+        //{
+        //    if (transform.position != _destination)
+        //    {
+        //        _pushing = true;
+        //        Debug.Log(_destination);
+        //        _heroMove.MoveHeroTo(_destination, OnFinishedMoving);                
+        //    }
 
-        }
+        //}
     }
 
     private void OnFinishedMoving()
     {
         _pushing = false;
         _heroMove.PlayerCanMoveHero = true;
+        _heroInteract.DetachHero();
         _pushable.transform.SetParent(null);
     }
 

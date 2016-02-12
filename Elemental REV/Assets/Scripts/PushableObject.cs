@@ -75,7 +75,7 @@ public class PushableObject : Interactable {
     private void DestinationReached()
     {
         _moving = false;
-        GroundCheck();
+        //GroundCheck();
     }
 
     protected override List<Vector3> GetInteractPosition()
