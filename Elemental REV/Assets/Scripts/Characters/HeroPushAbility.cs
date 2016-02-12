@@ -22,6 +22,11 @@ public class HeroPushAbility : MonoBehaviour
 
     void Update()
     {
+        //CheckForPushables();
+    }
+
+    private void CheckForPushables()
+    {
         if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Pushable"))
         {
             if (!_pushable)
@@ -40,7 +45,6 @@ public class HeroPushAbility : MonoBehaviour
             _pushable = null;
             _animationControl.SetBool("isPushing", false);
         }
-
     }
 
     void FixedUpdate()

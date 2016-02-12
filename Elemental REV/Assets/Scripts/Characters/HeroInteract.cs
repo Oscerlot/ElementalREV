@@ -73,31 +73,11 @@ public class HeroInteract : MonoBehaviour
         if (_currentInteractable != null)
         {
             if (interactState == PlayerInput.InteractState.Ended || !interactablesDetected.Contains(_currentInteractable) 
-                || !GridTools.Instance.PositionIsAccessible(FindNearestAttachPosition(_currentInteractable.InteractPositions), new []{gameObject, _currentInteractable.gameObject}))
+                || !GridTools.Instance.PositionIsAccessible(FindNearestPositionToPlayer(_currentInteractable.InteractPositions), new []{gameObject, _currentInteractable.gameObject}))
             {
                 DetachHero();
             }
         }
-    }
-
-
-    private Interactable GetNearestInteractable(List<Interactable> interactables)
-    {
-        if (interactables.Count <= 0)
-            return null;
-
-        Interactable nearestInteractable = interactables[0];
-
-        foreach (var interactable in interactables)
-        {
-            var distanceToInteractable = Vector3.Distance(interactable.transform.position, DetectionSpherePosition);
-            var distanceToNearestInteractable = Vector3.Distance(nearestInteractable.transform.position, DetectionSpherePosition);
-
-            if (distanceToInteractable < distanceToNearestInteractable)
-                nearestInteractable = interactable;
-
-        }
-        return nearestInteractable;
     }
 
 
@@ -116,11 +96,47 @@ public class HeroInteract : MonoBehaviour
         return interactables;
     }
 
+    private Interactable GetNearestInteractable(List<Interactable> interactables)
+    {
+        if (interactables.Count <= 0)
+            return null;
+
+        Interactable nearestInteractable = interactables[0];
+
+        foreach (var interactable in interactables)
+        {
+            var distanceToInteractable = Vector3.Distance(interactable.transform.position, DetectionSpherePosition);
+            var distanceToNearestInteractable = Vector3.Distance(nearestInteractable.transform.position, DetectionSpherePosition);
+
+            if (distanceToInteractable < distanceToNearestInteractable)
+                nearestInteractable = interactable;
+
+        }
+
+        return nearestInteractable;
+    }
+
+
+    private Vector3 FindNearestPositionToPlayer(List<Vector3> attachPositions)
+    {
+        
+        var nearestAttachPosition = attachPositions[0];
+        foreach (var validAttachPosition in attachPositions)
+        {
+            var distanceToCurrent = Vector3.Distance(validAttachPosition, transform.position);
+            var distanceToNearest = Vector3.Distance(nearestAttachPosition, transform.position);
+
+            if (distanceToCurrent < distanceToNearest)
+                nearestAttachPosition = validAttachPosition;
+        }
+
+        return nearestAttachPosition;
+    }
 
 
     private void AttachHeroTo(Interactable interactable)
     {
-        var targetPosition = FindNearestAttachPosition(interactable.InteractPositions);
+        var targetPosition = FindNearestPositionToPlayer(interactable.InteractPositions);
         var objectsToIgnore = new[] {gameObject, _currentInteractable.gameObject};
 
         if (GridTools.Instance.PositionIsAccessible(targetPosition, objectsToIgnore))
@@ -145,22 +161,6 @@ public class HeroInteract : MonoBehaviour
         }
     }
 
-    private Vector3 FindNearestAttachPosition(List<Vector3> attachPositions)
-    {
-        
-        var nearestAttachPosition = attachPositions[0];
-        foreach (var validAttachPosition in attachPositions)
-        {
-            var distanceToCurrent = Vector3.Distance(validAttachPosition, transform.position);
-            var distanceToNearest = Vector3.Distance(nearestAttachPosition, transform.position);
-
-            if (distanceToCurrent < distanceToNearest)
-                nearestAttachPosition = validAttachPosition;
-        }
-
-        return nearestAttachPosition;
-    }
-
     private void OnAttachPositionReached()
     {
         currentAttachState = AttachState.Attached;        
@@ -180,7 +180,7 @@ public class HeroInteract : MonoBehaviour
     {
         if (_currentInteractable && Application.isPlaying)
         {
-            var targetPosition = FindNearestAttachPosition(_currentInteractable.InteractPositions);
+            var targetPosition = FindNearestPositionToPlayer(_currentInteractable.InteractPositions);
             if (GridTools.Instance.PositionIsAccessible(targetPosition, new []{gameObject, _currentInteractable.gameObject}))
                 Gizmos.color = Color.green;
             else
