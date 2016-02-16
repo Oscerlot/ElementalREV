@@ -7,6 +7,7 @@ public class PushableObject : Interactable {
 
     private List<Vector3> _attachPositions = new List<Vector3>();
 
+    private Rigidbody _rgBody;
     private bool _moving = false;
     private float _gridMoveTime = .7f;
     private float _fallingTime = .2f;
@@ -15,10 +16,12 @@ public class PushableObject : Interactable {
 	{
 	    tag = "Pushable";
 	    gameObject.layer = LayerMask.NameToLayer("Interactable");
+	    _rgBody = GetComponent<Rigidbody>();
 	}
 
     void Update()
-    {
+    {       
+
         InputDevice device = InputManager.ActiveDevice;
 
         var moveDirection = Vector3.zero;
@@ -50,12 +53,14 @@ public class PushableObject : Interactable {
             Debug.Log(GridTools.Instance.SnapVectorToGrid(transform.position + moveDirection));
         }
 
+        GroundCheck();
+
     }
 
     private void GridMove(Vector3 direction, float timeTaken)
     {
         var destination = transform.position + direction;
-        if (!_moving)
+        if (!_moving && _rgBody.isKinematic)
         {
             iTween.MoveTo(gameObject,
                 new Hashtable() {{"position", destination}, {"time", timeTaken}, {"onComplete", "DestinationReached"}, {"easeType", "linear"} });
@@ -65,9 +70,17 @@ public class PushableObject : Interactable {
 
     void GroundCheck()
     {
-        if (GridTools.Instance.PositionIsAccessible(transform.position + (Vector3.down), new[] {gameObject}))
+        //If not grounded
+        if (!_moving && !Physics.Raycast(transform.position + (Vector3.up * .01f), -transform.up, .02f))
         {
-            GridMove(Vector3.down, _fallingTime);
+            //Fall
+            _rgBody.constraints = (RigidbodyConstraints) 122;
+            _rgBody.isKinematic = false;           
+        }
+        else
+        {
+            _rgBody.constraints = RigidbodyConstraints.FreezeRotation;
+            _rgBody.isKinematic = true;
         }
 
     }
@@ -75,7 +88,6 @@ public class PushableObject : Interactable {
     private void DestinationReached()
     {
         _moving = false;
-        //GroundCheck();
     }
 
     protected override List<Vector3> GetInteractPosition()
@@ -104,12 +116,12 @@ public class PushableObject : Interactable {
         if (!Application.isPlaying)
             return;
 
-        if (GridTools.Instance.PositionIsAccessible(transform.position + (Vector3.down), new[] { gameObject }))
+        if (GridTools.Instance.PositionIsAccessible(transform.position + (Vector3.down * .99f), new[] { gameObject }))
             Gizmos.color = Color.green;
         else
             Gizmos.color = Color.red;
             
-        Gizmos.DrawWireCube(GridTools.Instance.SnapVectorToGrid(transform.position + (Vector3.down)), Vector3.one);
+        Gizmos.DrawWireCube(GridTools.Instance.SnapVectorToGrid(transform.position + (Vector3.down * .99f)), Vector3.one);
 
        
     }

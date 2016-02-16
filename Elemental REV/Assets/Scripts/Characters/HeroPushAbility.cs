@@ -79,7 +79,7 @@ public class HeroPushAbility : MonoBehaviour
         if (!Application.isPlaying)
             return;
 
-        if (GridTools.Instance.PositionIsAccessible(GridTools.Instance.SnapVectorToGrid(transform.position), new []{gameObject}))
+        if (GridTools.Instance.PositionIsAccessible(transform.position, new []{gameObject}))
             Gizmos.color = Color.green;
         else
             Gizmos.color = Color.red;

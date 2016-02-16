@@ -60,9 +60,11 @@ public class GridTools : MonoBehaviour
 
     public Vector3 SnapVectorToGrid(Vector3 position)
     {
-        position -= GridOffset;
-        Vector3 newVector = new Vector3(Mathf.Round(position.x), Mathf.Round(position.y), Mathf.Round(position.z));
-        newVector += GridOffset;
+        position.x -= GridOffset.x;
+        position.z -= GridOffset.z;
+        Vector3 newVector = new Vector3(Mathf.Round(position.x), position.y + .5f, Mathf.Round(position.z));
+        newVector.x += GridOffset.x;
+        newVector.z += GridOffset.z;
         
         return newVector;
     }
