@@ -16,6 +16,7 @@ MonoBehaviour:
   - 3dcf2358-c61b-b8c5-b0ba-f17eaf6f97c5
   - 9f2b5653-b3f1-432e-6a20-ef2e1a632541
   - 2ae5491a-120e-b3ed-75cf-b61a877a6d55
+  - e16355c7-3e31-3e24-7097-cb953650873c
   values:
   - objectName: 
     stringID: 212c45b5-955b-88a9-138c-985d1fe2f98d
@@ -53,3 +54,12 @@ MonoBehaviour:
       hPivotByte: 4
       vPivotByte: 0
     prefab: {fileID: 149072, guid: b907c5cc1bac31640b51e03e31091a7c, type: 2}
+  - objectName: 
+    stringID: e16355c7-3e31-3e24-7097-cb953650873c
+    creationIndex: 4
+    anchor:
+      hPivot: 4
+      vPivot: 0
+      hPivotByte: 4
+      vPivotByte: 0
+    prefab: {fileID: 191312, guid: 3ccf8b1f8ea1bc94a91f5d4ab89f2405, type: 2}

@@ -23,6 +23,12 @@ public class HeroPushAbility : MonoBehaviour
     void Update()
     {
         CheckForPushables();
+
+        if (_pushable)
+        {
+            _pushable.GridMove((_pushable.transform.position - transform.position).normalized, 1f);
+        }
+
     }
 
     private void CheckForPushables()

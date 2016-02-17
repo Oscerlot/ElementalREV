@@ -57,7 +57,7 @@ public class PushableObject : Interactable {
 
     }
 
-    private void GridMove(Vector3 direction, float timeTaken)
+    public void GridMove(Vector3 direction, float timeTaken)
     {
         var destination = transform.position + direction;
         if (!_moving && _rgBody.isKinematic)

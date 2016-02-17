@@ -31,6 +31,7 @@ public class HeroInteract : MonoBehaviour
     public AttachState currentAttachState = AttachState.Detached;
 
     private float _attachRotateSpeed = 10f;
+    private Vector3 _currentInteractablePreviousPosition;
 
     private Vector3 DetectionSpherePosition {
         get { return _col.bounds.center + transform.forward*_detectionSphereForwardDistance; }
@@ -66,7 +67,11 @@ public class HeroInteract : MonoBehaviour
         {            
             if (interactState == PlayerInput.InteractState.Begun && _currentInteractable == null)
             {
-                _currentInteractable = GetNearestInteractable(interactablesDetected);
+                var detectedInteractable = GetNearestInteractable(interactablesDetected);
+                if (YAxisDistanceComparison(FindNearestPositionToPlayer(detectedInteractable.InteractPositions),
+                    transform.position, .1f))
+                    _currentInteractable = GetNearestInteractable(interactablesDetected);
+      
             }
         }
 
@@ -77,6 +82,11 @@ public class HeroInteract : MonoBehaviour
                 DetachHero();
             }
         }
+    }
+
+    private bool YAxisDistanceComparison(Vector3 positionA, Vector3 positionB, float maxDistance)
+    {
+        return Mathf.Abs(Mathf.Abs(positionA.y) - Mathf.Abs(positionB.y)) < maxDistance;
     }
 
     private bool InteractButtonReleasedWhileAttaching(PlayerInput.InteractState interactState)
