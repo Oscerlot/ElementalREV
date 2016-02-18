@@ -8,7 +8,7 @@ public class PushableObject : Interactable {
     private List<Vector3> _attachPositions = new List<Vector3>();
 
     private Rigidbody _rgBody;
-    private bool _moving = false;
+    public bool beingPushed = false;
     private float _gridMoveTime = .7f;
     private float _fallingTime = .2f;
 
@@ -46,32 +46,36 @@ public class PushableObject : Interactable {
             }
         }
 
-        if (moveDirection != Vector3.zero &&
-            GridTools.Instance.PositionIsAccessible(transform.position + moveDirection, new[] {gameObject}))
-        {
-            GridMove(moveDirection, _gridMoveTime);
-            Debug.Log(GridTools.Instance.SnapVectorToGrid(transform.position + moveDirection));
-        }
-
         GroundCheck();
 
     }
 
-    public void GridMove(Vector3 direction, float timeTaken)
+
+    public void Push(Vector3 direction, float timeTaken)
+    {
+        if (direction != Vector3.zero &&
+            GridTools.Instance.PositionIsAccessible(transform.position + direction, new[] { gameObject }))
+        {
+            direction.y = 0;
+            GridMove(direction, _gridMoveTime);
+        }
+    }
+
+    private void GridMove(Vector3 direction, float timeTaken)
     {
         var destination = transform.position + direction;
-        if (!_moving && _rgBody.isKinematic)
+        if (!beingPushed && _rgBody.isKinematic)
         {
             iTween.MoveTo(gameObject,
-                new Hashtable() {{"position", destination}, {"time", timeTaken}, {"onComplete", "DestinationReached"}, {"easeType", "linear"} });
-            _moving = true;
+                new Hashtable() {{"position", destination}, {"time", timeTaken}, {"onComplete", "DestinationReached"}, {"easeType", "easeInOutSine" } });
+            beingPushed = true;
         }
     }
 
     void GroundCheck()
     {
         //If not grounded
-        if (!_moving && !Physics.Raycast(transform.position + (Vector3.up * .01f), -transform.up, .02f))
+        if (!beingPushed && !Physics.Raycast(transform.position + (Vector3.up * .01f), -transform.up, .02f))
         {
             //Fall
             _rgBody.constraints = (RigidbodyConstraints) 122;
@@ -87,7 +91,7 @@ public class PushableObject : Interactable {
 
     private void DestinationReached()
     {
-        _moving = false;
+        beingPushed = false;
     }
 
     protected override List<Vector3> GetInteractPosition()

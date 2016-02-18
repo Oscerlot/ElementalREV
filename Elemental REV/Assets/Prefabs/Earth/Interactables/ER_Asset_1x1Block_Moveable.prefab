@@ -11,7 +11,8 @@ GameObject:
   - 33: {fileID: 3312312}
   - 23: {fileID: 2301756}
   - 65: {fileID: 6527812}
-  m_Layer: 0
+  - 114: {fileID: 11466974}
+  m_Layer: 10
   m_Name: ER_Asset_1x1Block_Moveable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.6666, y: -71.49581, z: 11.620677}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,6 +77,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 109.19672, y: 98.32488, z: 109.60497}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11466974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f0ddd2dd45c4e4ca5ea8fe533dac6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beingPushed: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

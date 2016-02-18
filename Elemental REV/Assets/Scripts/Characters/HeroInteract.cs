@@ -65,7 +65,7 @@ public class HeroInteract : MonoBehaviour
         // Interactable Detected
         if (interactablesDetected.Count > 0)
         {            
-            if (interactState == PlayerInput.InteractState.Begun && _currentInteractable == null)
+            if (interactState == PlayerInput.InteractState.BeingHeld || interactState == PlayerInput.InteractState.Began && _currentInteractable == null)
             {
                 var detectedInteractable = GetNearestInteractable(interactablesDetected);
                 if (YAxisDistanceComparison(FindNearestPositionToPlayer(detectedInteractable.InteractPositions),
@@ -77,7 +77,7 @@ public class HeroInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
-            if ((InteractButtonReleasedWhileAttaching(interactState)) || !interactablesDetected.Contains(_currentInteractable) || !TargetGridPositionIsAccessible())
+            if ((interactState == PlayerInput.InteractState.Released) || !interactablesDetected.Contains(_currentInteractable) || !TargetGridPositionIsAccessible())
             {                                 
                 DetachHero();
             }
@@ -172,7 +172,6 @@ public class HeroInteract : MonoBehaviour
 
     public void DetachHero()
     {
-        Debug.Log("Detach");
         currentAttachState = AttachState.Detached;
         _heroMove.PlayerCanMoveHero = true;
         _currentInteractable = null;

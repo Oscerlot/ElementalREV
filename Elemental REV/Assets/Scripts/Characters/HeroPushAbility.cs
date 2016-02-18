@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroPushAbility : MonoBehaviour
@@ -25,10 +26,7 @@ public class HeroPushAbility : MonoBehaviour
         CheckForPushables();
 
         if (_pushable)
-        {
-            _pushable.GridMove((_pushable.transform.position - transform.position).normalized, 1f);
-        }
-
+            _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
     }
 
     private void CheckForPushables()
@@ -37,42 +35,51 @@ public class HeroPushAbility : MonoBehaviour
         {
             if (!_pushable)
             {
-                //Debug.Log("Found a motherfucking pushable");
                 _pushable = (PushableObject) _heroInteract.CurrentInteractable;
                 //_pushable.transform.SetParent(transform);
                 //_destination = _pushable.transform.position;
                 _animationControl.SetBool("isPushing", true);
+                Debug.Log("Pushing");
             }
         }
-        else if (_pushable)
+        else if (_pushable && !_pushable.beingPushed)
         {
             //Debug.Log("No longer pushing");
             //_pushable.transform.SetParent(null);
+            _heroInteract.DetachHero();
             _pushable = null;
             _animationControl.SetBool("isPushing", false);
+            Debug.Log("Not Pushing");
         }
     }
 
     void FixedUpdate()
     {
-        //if (_pushable)
-        //{
-        //    if (transform.position != _destination)
-        //    {
-        //        _pushing = true;
-        //        Debug.Log(_destination);
-        //        _heroMove.MoveHeroTo(_destination, OnFinishedMoving);                
-        //    }
-
-        //}
+        if (_pushable)
+        {
+            var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
+            _heroMove.MoveHeroTo(destination, OnDestinationReached);
+        }
     }
 
-    private void OnFinishedMoving()
+    void OnDestinationReached()
     {
-        _pushing = false;
-        _heroMove.PlayerCanMoveHero = true;
-        _heroInteract.DetachHero();
-        _pushable.transform.SetParent(null);
+    }
+
+    private Vector3 FindNearestPositionToPlayer(List<Vector3> attachPositions)
+    {
+
+        var nearestAttachPosition = attachPositions[0];
+        foreach (var validAttachPosition in attachPositions)
+        {
+            var distanceToCurrent = Vector3.Distance(validAttachPosition, transform.position);
+            var distanceToNearest = Vector3.Distance(nearestAttachPosition, transform.position);
+
+            if (distanceToCurrent < distanceToNearest)
+                nearestAttachPosition = validAttachPosition;
+        }
+
+        return nearestAttachPosition;
     }
 
     void OnDrawGizmos()

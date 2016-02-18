@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
     private HeroInteract _heroInteract;
     private Vector3 _moveInDirection;
 
-    public enum InteractState { Begun, BeingHeld, Released, Inactive };
+    public enum InteractState { Began, BeingHeld, Released, Inactive };
 
 
     void Start()
@@ -76,7 +76,7 @@ public class PlayerInput : MonoBehaviour
         if (device.Action1.WasReleased)
             return InteractState.Released;
         if (device.Action1.WasPressed)
-            return InteractState.Begun;
+            return InteractState.Began;
         if (device.Action1.IsPressed)
             return InteractState.BeingHeld;
 
