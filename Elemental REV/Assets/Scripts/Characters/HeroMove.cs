@@ -118,9 +118,6 @@ public class HeroMove : MonoBehaviour {
                 }
             }
         }
-        ////Check for moving ground
-        //if (_movingGroundVelocity != Vector3.zero)
-        //    _movingGroundVelocity = Vector3.zero;
 
         _isGrounded = false;
     }
@@ -134,10 +131,10 @@ public class HeroMove : MonoBehaviour {
         }
     }
 
-    public void MoveHeroTo(Vector3 destination, Action destinationReached)
+    public void MoveHeroTo(Vector3 destination, Action destinationReached = null)
     {
         PlayerCanMoveHero = false;
-        var directionToTargetPosition = (destination - transform.position).normalized;        
+        var directionToTargetPosition = (destination - transform.position).normalized;
 
         //Have we reached the target position?
         if (Vector3.Distance(destination, transform.position) > .02f)
@@ -146,7 +143,8 @@ public class HeroMove : MonoBehaviour {
         }
         else 
         {
-            destinationReached.Invoke();
+            if (destinationReached != null)
+                destinationReached.Invoke();
             ResetVelocity();
             transform.position = destination;
         }

@@ -10,8 +10,7 @@ public class HeroPushAbility : MonoBehaviour
     private HeroMove _heroMove;
 
     private PushableObject _pushable;
-    private Vector3 _destination;
-    private bool _pushing = false;
+    static int pushingState = Animator.StringToHash("Base.Push");
 
     void Start()
     {
@@ -25,8 +24,12 @@ public class HeroPushAbility : MonoBehaviour
     {
         CheckForPushables();
 
-        if (_pushable)
+        //Check if the animator is on the "Push" animation
+        var currentBaseState = _animationControl.GetCurrentAnimatorStateInfo(0);
+        if (_pushable && (currentBaseState.fullPathHash == pushingState))
+        {
             _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
+        }
     }
 
     private void CheckForPushables()
@@ -36,20 +39,15 @@ public class HeroPushAbility : MonoBehaviour
             if (!_pushable)
             {
                 _pushable = (PushableObject) _heroInteract.CurrentInteractable;
-                //_pushable.transform.SetParent(transform);
-                //_destination = _pushable.transform.position;
                 _animationControl.SetBool("isPushing", true);
-                Debug.Log("Pushing");
             }
         }
         else if (_pushable && !_pushable.beingPushed)
         {
-            //Debug.Log("No longer pushing");
-            //_pushable.transform.SetParent(null);
             _heroInteract.DetachHero();
             _pushable = null;
             _animationControl.SetBool("isPushing", false);
-            Debug.Log("Not Pushing");
+
         }
     }
 
@@ -58,12 +56,8 @@ public class HeroPushAbility : MonoBehaviour
         if (_pushable)
         {
             var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
-            _heroMove.MoveHeroTo(destination, OnDestinationReached);
+            _heroMove.MoveHeroTo(destination);
         }
-    }
-
-    void OnDestinationReached()
-    {
     }
 
     private Vector3 FindNearestPositionToPlayer(List<Vector3> attachPositions)

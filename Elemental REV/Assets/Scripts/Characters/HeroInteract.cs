@@ -135,7 +135,7 @@ public class HeroInteract : MonoBehaviour
         return nearestInteractable;
     }
 
-
+    //TODO: this function is repeated on the push ability... do domething about it mate.
     private Vector3 FindNearestPositionToPlayer(List<Vector3> attachPositions)
     {
         

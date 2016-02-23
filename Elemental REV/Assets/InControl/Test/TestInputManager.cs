@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using UnityEngine;
 using InControl;
+using UnityEngine.SceneManagement;
 
 //#if UNITY_EDITOR
 //using UnityEditor;
@@ -98,7 +99,7 @@ namespace InControl
 
 			if (Input.GetKeyDown( KeyCode.R ))
 			{
-				Application.LoadLevel( "TestInputManager" );
+				SceneManager.LoadScene( "TestInputManager" );
 			}
 		}
 

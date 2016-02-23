@@ -5,12 +5,12 @@ using InControl;
 
 public class PushableObject : Interactable {
 
-    private List<Vector3> _attachPositions = new List<Vector3>();
-
-    private Rigidbody _rgBody;
     public bool beingPushed = false;
-    private float _gridMoveTime = .7f;
-    private float _fallingTime = .2f;
+
+    private List<Vector3> _attachPositions = new List<Vector3>();
+    private Rigidbody _rgBody;    
+    private float _gridMoveTime = 1f;
+
 
 	void Start ()
 	{
@@ -21,30 +21,6 @@ public class PushableObject : Interactable {
 
     void Update()
     {       
-
-        InputDevice device = InputManager.ActiveDevice;
-
-        var moveDirection = Vector3.zero;
-
-        if (device)
-        {
-            if (device.DPadRight.WasPressed)
-            {
-                moveDirection = Vector3.right;
-            }
-            else if (device.DPadLeft.WasPressed)
-            {
-                moveDirection = Vector3.left;
-            }
-            else if (device.DPadUp.WasPressed)
-            {
-                moveDirection = Vector3.forward;
-            }
-            else if (device.DPadDown.WasPressed)
-            {
-                moveDirection = Vector3.back;
-            }
-        }
 
         GroundCheck();
 
@@ -90,8 +66,9 @@ public class PushableObject : Interactable {
     }
 
     private void DestinationReached()
-    {
+    {        
         beingPushed = false;
+        GroundCheck(); //To keep the player from pushing an extra grid space when the pushable is not grounded
     }
 
     protected override List<Vector3> GetInteractPosition()
