@@ -52,6 +52,7 @@ public class HeroMove : MonoBehaviour {
     void FixedUpdate()
     {       
         ApplyGravity();
+
     }
 
     public void ReceivePlayerMovementInput(Vector3 direction)

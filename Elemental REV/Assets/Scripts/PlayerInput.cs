@@ -4,6 +4,9 @@ using InControl;
 
 public class PlayerInput : MonoBehaviour
 {
+    public Vector3 MovInDirection {
+        get { return _moveInDirection; }
+    }
 
     private Transform _cam;
     private HeroMove _heroMovement;
