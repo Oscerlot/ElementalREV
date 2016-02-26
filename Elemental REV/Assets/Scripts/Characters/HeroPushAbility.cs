@@ -56,7 +56,10 @@ public class HeroPushAbility : MonoBehaviour
         if (_pushable)
         {
             var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
-            _heroMove.MoveHeroTo(destination);
+            //_heroMove.MoveHeroTo(destination);
+            _heroMove.PlayerCanMoveHero = false;
+            _heroMove.RotateHeroTowards(_pushable.transform.position - transform.position, 1f);
+            GetComponent<Rigidbody>().MovePosition(destination);
         }
     }
 
