@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Earth_diffuse
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 11, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -32,13 +32,6 @@ Material:
       data:
         first:
           name: _DetailNormalMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -78,6 +71,41 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ToonShade
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -94,7 +122,19 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.7
+        second: 0.03
+      data:
+        first:
+          name: _Smoothness
+        second: 0.5
+      data:
+        first:
+          name: _Emission
+        second: 1
+      data:
+        first:
+          name: _Parallax
+        second: 0
       data:
         first:
           name: _ZWrite
@@ -105,16 +145,8 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
           name: _BumpScale
         second: 1
-      data:
-        first:
-          name: _Parallax
-        second: 0.02
       data:
         first:
           name: _OcclusionStrength
@@ -130,6 +162,22 @@ Material:
       data:
         first:
           name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0.5
+      data:
+        first:
+          name: _Outline
+        second: 0.005
+      data:
+        first:
+          name: _EdgeLength
+        second: 10
+      data:
+        first:
+          name: _blurSizeXY
         second: 0
     m_Colors:
       data:
@@ -148,3 +196,7 @@ Material:
         first:
           name: _Emission
         second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}
