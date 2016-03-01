@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1821122892, guid: 58ff72ded7a3e6d4e9db451d532c723d, type: 3}
+  m_Name: Earth_PaletteWrappers
+  m_EditorClassIdentifier: 
+--- !u!114 &11427082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2008788831, guid: 58ff72ded7a3e6d4e9db451d532c723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys:
+  - 2bbb081c-1809-142f-5db9-4c1ba5d77c7f
+  values:
+  - stringID: 2bbb081c-1809-142f-5db9-4c1ba5d77c7f
+    tag: Dirt
+--- !u!114 &11462548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -631142462, guid: 58ff72ded7a3e6d4e9db451d532c723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: []
+  values: []
+--- !u!114 &11493692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1507578384, guid: 58ff72ded7a3e6d4e9db451d532c723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: []
+  values: []
