@@ -4,6 +4,7 @@ using System.Collections;
 public class HeroClimb : MonoBehaviour
 {
     public float maxHeightClimb = .5f;
+    public LayerMask climbableLayers;
 
     private HeroAwareness _heroAwareness;
     private PlayerInput _playerInput;
@@ -40,7 +41,7 @@ public class HeroClimb : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    if (!_currentWall && _heroAwareness.CurrentObjectInAwareness && _heroAwareness.CurrentObjectInAwareness.layer.Equals(LayerMask.NameToLayer("Ground")))
+	    if (!_currentWall && _heroAwareness.CurrentObjectInAwareness &&  climbableLayers == (climbableLayers | (1 << _heroAwareness.CurrentObjectInAwareness.layer)))
 	    {
 	        if (_heroAwareness.CurrentObjectInAwareness.GetComponent<Collider>())
 	        {
