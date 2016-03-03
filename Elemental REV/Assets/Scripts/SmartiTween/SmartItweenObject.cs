@@ -179,7 +179,7 @@ public class SmartItweenObject : TriggerObject
     public override void deActivate()
     {
         base.deActivate();
-
+        Debug.Log("Deactivate");
         iTween.Stop(gameObject);
         if (resetToOriginalPos && triggerType != TriggerType.pingPong)
         {

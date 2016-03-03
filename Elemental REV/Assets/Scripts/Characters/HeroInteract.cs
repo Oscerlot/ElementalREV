@@ -121,6 +121,7 @@ public class HeroInteract : MonoBehaviour
 
     public void DetachHero()
     {
+        Debug.Log("Detach");
         currentAttachState = AttachState.Detached;
         _heroMove.PlayerCanMoveHero = true;
         _currentInteractable = null;
