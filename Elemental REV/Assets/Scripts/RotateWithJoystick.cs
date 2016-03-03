@@ -8,12 +8,12 @@ public class RotateWithJoystick : MonoBehaviour
     public float zRotationAngleLimit = 20;
 
     private float _maxZRotation;
-    private float _minZrotation;
+    private float _minZRotation;
 
     void Start()
     {
         _maxZRotation = (transform.rotation.eulerAngles.z + zRotationAngleLimit) % 360;
-        _minZrotation = ((transform.rotation.eulerAngles.z - zRotationAngleLimit) % 360 + 360) % 360;
+        _minZRotation = ((transform.rotation.eulerAngles.z - zRotationAngleLimit) % 360 + 360) % 360;
     }
 
     // Update is called once per frame
@@ -56,6 +56,6 @@ public class RotateWithJoystick : MonoBehaviour
 
     private bool ZRotationIsWithinLimits(float zRotation)
     {
-        return Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) < _maxZRotation || Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) > _minZrotation;
+        return Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) < _maxZRotation || Mathf.Abs(transform.rotation.eulerAngles.z + zRotation) > _minZRotation;
     }
 }
