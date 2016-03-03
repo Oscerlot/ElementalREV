@@ -21,6 +21,8 @@ public class HeroPullLever : MonoBehaviour
 	    CheckForLevers();
 	}
 
+
+    //TODO: Check for levers and check for pushables seem awfully similar dont you think? Do something about it mate...
     private void CheckForLevers()
     {
         if (_heroInteract.CurrentInteractable && _heroInteract.CurrentInteractable.tag.Equals("Lever"))
@@ -29,15 +31,13 @@ public class HeroPullLever : MonoBehaviour
             {
                 _lever = (Lever)_heroInteract.CurrentInteractable;
                 _lever.ToggleLever();
-                _heroMove.PlayerCanMoveHero = false;
                 _animationControl.SetTrigger("PullLever");
             }
         }
-        else if (_lever && !_lever.IsInUse())
+        if (_lever && !_lever.IsInUse())
         {
             _heroInteract.DetachHero();
             _lever = null;
-
         }
     }
 }

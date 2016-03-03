@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class Interactable : MonoBehaviour {
+public abstract class Interactable : MonoBehaviour
+{
 
     //The position/s the hero must reach before interacting with the interactable
     public List<Vector3> InteractPositions

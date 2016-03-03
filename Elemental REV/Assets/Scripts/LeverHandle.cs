@@ -22,7 +22,7 @@ public class LeverHandle : MonoBehaviour
         {
             CurrentHandleState = HandleState.Pulling;
             iTween.RotateTo(gameObject,
-                new Hashtable() {{"time", 1f}, {"rotation", pullRotation}, {"onComplete", "SetToPulledState"}});
+                new Hashtable() {{"time", 2f}, {"rotation", pullRotation}, {"onComplete", "SetToPulledState"}, {"easeType", "linear"} });
         }
     }
 
@@ -32,7 +32,7 @@ public class LeverHandle : MonoBehaviour
         {
             CurrentHandleState = HandleState.Pushing;
             iTween.RotateTo(gameObject,
-                new Hashtable() {{"time", 1f}, {"rotation", pushRotation}, {"onComplete", "SetToPushedState"}});
+                new Hashtable() {{"time", 2f}, {"rotation", pushRotation}, {"onComplete", "SetToPushedState"}, { "easeType", "linear" } });
         }
     }
 

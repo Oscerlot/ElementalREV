@@ -150,5 +150,11 @@ public class HeroMove : MonoBehaviour {
             transform.position = destination;
         }
     }
+
+    public void MovePosition(Vector3 newPosition)
+    {
+        _moveSpeed = .6f; //To let the animator know we are moving
+        _rgBody.MovePosition(newPosition);
+    }
 }
 

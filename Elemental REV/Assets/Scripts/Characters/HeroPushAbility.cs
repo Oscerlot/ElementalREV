@@ -10,7 +10,7 @@ public class HeroPushAbility : MonoBehaviour
     private HeroMove _heroMove;
 
     private PushableObject _pushable;
-    static int pushingState = Animator.StringToHash("Base.Push");
+    static int pushAnimState = Animator.StringToHash("Base.Push");
 
     void Start()
     {
@@ -22,13 +22,26 @@ public class HeroPushAbility : MonoBehaviour
 
     void Update()
     {
-        CheckForPushables();
+        CheckForPushables();        
 
         //Check if the animator is on the "Push" animation
         var currentBaseState = _animationControl.GetCurrentAnimatorStateInfo(0);
-        if (_pushable && (currentBaseState.fullPathHash == pushingState))
+        if (_pushable && (currentBaseState.fullPathHash == pushAnimState) && !_pushable.beingPushed)
         {
-            _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
+            if (_heroInteract.currentInteractState == PlayerInput.InteractState.BeingHeld)
+                _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
+            else
+                _heroInteract.DetachHero();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (_pushable)
+        {
+            var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
+            _heroMove.RotateHeroTowards(_pushable.transform.position - transform.position, 1f);
+            _heroMove.MovePosition(destination);
         }
     }
 
@@ -44,22 +57,10 @@ public class HeroPushAbility : MonoBehaviour
         }
         else if (_pushable && !_pushable.beingPushed)
         {
-            _heroInteract.DetachHero();
+            //_heroInteract.DetachHero();
             _pushable = null;
             _animationControl.SetBool("isPushing", false);
 
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (_pushable)
-        {
-            var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
-            //_heroMove.MoveHeroTo(destination);
-            _heroMove.PlayerCanMoveHero = false;
-            _heroMove.RotateHeroTowards(_pushable.transform.position - transform.position, 1f);
-            GetComponent<Rigidbody>().MovePosition(destination);
         }
     }
 

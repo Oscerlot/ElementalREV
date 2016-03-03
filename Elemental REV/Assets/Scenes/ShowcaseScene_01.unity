@@ -175,14 +175,6 @@ Prefab:
       propertyPath: m_Name
       value: StoneLever
       objectReference: {fileID: 0}
-    - target: {fileID: 11466158, guid: 203f064f865d06d44b4e5be09fe760c5, type: 2}
-      propertyPath: pullRotation.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 176888, guid: 203f064f865d06d44b4e5be09fe760c5, type: 2}
-      propertyPath: m_TagString
-      value: Lever
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 203f064f865d06d44b4e5be09fe760c5, type: 2}
   m_IsPrefabParent: 0
@@ -400,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttachState: 2
+  currentInteractState: 0
 --- !u!1 &332328900
 GameObject:
   m_ObjectHideFlags: 0

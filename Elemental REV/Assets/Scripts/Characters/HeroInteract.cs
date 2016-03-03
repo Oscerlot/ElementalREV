@@ -25,7 +25,11 @@ public class HeroInteract : MonoBehaviour
     private HeroMove _heroMove;
     private HeroAwareness _heroAwareness;
     public enum AttachState { Attaching, Attached, Detached }
+
+    [HideInInspector]
     public AttachState currentAttachState = AttachState.Detached;
+    [HideInInspector]
+    public PlayerInput.InteractState currentInteractState;
 
     private float _attachRotateSpeed = 10f;
 
@@ -51,6 +55,7 @@ public class HeroInteract : MonoBehaviour
 
     private void CheckForInteractables(PlayerInput.InteractState interactState)
     {
+        currentInteractState = interactState;
         // Interactable Detected
         if (_heroAwareness.CurrentObjectInAwareness && _heroAwareness.CurrentObjectInAwareness.gameObject.layer.Equals(LayerMask.NameToLayer("Interactable")))
         {            
@@ -65,7 +70,7 @@ public class HeroInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
-            if ((interactState == PlayerInput.InteractState.Released) || !_heroAwareness.CurrentObjectInAwareness || !TargetGridPositionIsAccessible())
+            if ((interactState == PlayerInput.InteractState.Released && currentAttachState != AttachState.Attached) || !_heroAwareness.CurrentObjectInAwareness || !TargetGridPositionIsAccessible())
             {                                 
                 DetachHero();
             }
@@ -121,7 +126,6 @@ public class HeroInteract : MonoBehaviour
 
     public void DetachHero()
     {
-        Debug.Log("Detach");
         currentAttachState = AttachState.Detached;
         _heroMove.PlayerCanMoveHero = true;
         _currentInteractable = null;

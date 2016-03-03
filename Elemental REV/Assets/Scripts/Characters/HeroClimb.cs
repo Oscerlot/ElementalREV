@@ -69,7 +69,6 @@ public class HeroClimb : MonoBehaviour
                 Gizmos.color = Color.red;
             
             Gizmos.DrawWireCube(GridTools.Instance.SnapVectorToGrid(_currentWallPos), Vector3.one);
-            Debug.Log(_distanceToTopOfWall);
 
         }
     }
