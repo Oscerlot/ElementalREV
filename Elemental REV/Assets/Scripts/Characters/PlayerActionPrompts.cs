@@ -24,7 +24,7 @@ public class PlayerActionPrompts : MonoBehaviour
 	    {
 	        var interactable = _heroAwareness.CurrentObjectInAwareness.GetComponent<Interactable>();
 
-	        if (interactable && _heroInteract.currentInteractState != PlayerInput.InteractState.BeingHeld && !interactable.IsBeingUsed())
+	        if (interactable && _heroInteract.InteractState != PlayerInput.InteractState.BeingHeld && !interactable.IsBeingUsed())
 	            DisplayPromptOnTarget(transform.position + Vector3.up*1.5f);
 	        else 
 	            HidePrompt();

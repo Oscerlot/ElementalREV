@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroPushAbility : MonoBehaviour
@@ -10,7 +9,7 @@ public class HeroPushAbility : MonoBehaviour
     private HeroMove _heroMove;
 
     private PushableObject _pushable;
-    static int pushAnimState = Animator.StringToHash("Base.Push");
+    static readonly int PushAnimState = Animator.StringToHash("Base.Push");
 
     void Start()
     {
@@ -20,29 +19,52 @@ public class HeroPushAbility : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        CheckForPushables();        
-
-        //Check if the animator is on the "Push" animation
-        var currentBaseState = _animationControl.GetCurrentAnimatorStateInfo(0);
-        if (_pushable && (currentBaseState.fullPathHash == pushAnimState) && !_pushable.beingPushed)
-        {
-            if (_heroInteract.currentInteractState == PlayerInput.InteractState.BeingHeld)
-                _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
-            else
-                _heroInteract.DetachHero();
-        }
-    }
-
     void FixedUpdate()
     {
         if (_pushable)
         {
-            var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
-            _heroMove.RotateHeroTowards(_pushable.transform.position - transform.position, 1f);
-            _heroMove.MovePosition(destination);
+            AttachHeroToPushable();
         }
+    }
+
+    void Update()
+    {
+        CheckForPushables();
+
+        HandleObjectPushing();
+    }
+
+    private void HandleObjectPushing()
+    {
+        
+        if (_pushable && !_pushable.beingPushed)
+        {
+            if (_heroInteract.InteractState == PlayerInput.InteractState.BeingHeld)
+            {
+                _animationControl.SetBool("isPushing", true);
+
+                if (PushAnimationIsPlaying())       //Todo: Have the option to not require push animation to push?
+                    _pushable.Push((_pushable.transform.position - transform.position).normalized, 1.5f);
+            }
+            else
+            {
+                _heroInteract.DetachHero();
+                _animationControl.SetBool("isPushing", false);
+            }
+        }
+    }
+
+    private bool PushAnimationIsPlaying()
+    {
+        var currentBaseState = _animationControl.GetCurrentAnimatorStateInfo(0);
+        return (currentBaseState.fullPathHash == PushAnimState);
+    }
+
+    private void AttachHeroToPushable()
+    {
+        var destination = FindNearestPositionToPlayer(_pushable.InteractPositions);
+        _heroMove.RotateHeroTowards(_pushable.transform.position - transform.position, 1f);
+        _heroMove.MovePosition(destination);
     }
 
     private void CheckForPushables()
@@ -52,15 +74,11 @@ public class HeroPushAbility : MonoBehaviour
             if (!_pushable)
             {
                 _pushable = (PushableObject) _heroInteract.CurrentInteractable;
-                _animationControl.SetBool("isPushing", true);
             }
         }
         else if (_pushable && !_pushable.beingPushed)
         {
-            //_heroInteract.DetachHero();
             _pushable = null;
-            _animationControl.SetBool("isPushing", false);
-
         }
     }
 

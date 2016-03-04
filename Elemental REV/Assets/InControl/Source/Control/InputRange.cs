@@ -15,7 +15,6 @@ namespace InControl
 		public static readonly InputRange ZeroToOne = new InputRange( 0.0f, 1.0f, InputRangeType.ZeroToOne );
 		public static readonly InputRange ZeroToMinusOne = new InputRange( 0.0f, -1.0f, InputRangeType.ZeroToMinusOne );
 
-		// TODO: These should be deprecated when custom profiles are.
 		public static readonly InputRange ZeroToNegativeInfinity = new InputRange( 0.0f, float.NegativeInfinity, InputRangeType.ZeroToNegativeInfinity );
 		public static readonly InputRange ZeroToPositiveInfinity = new InputRange( 0.0f, float.PositiveInfinity, InputRangeType.ZeroToPositiveInfinity );
 		public static readonly InputRange Everything = new InputRange( float.NegativeInfinity, float.PositiveInfinity, InputRangeType.Everything );

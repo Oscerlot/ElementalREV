@@ -8,31 +8,25 @@ using System.Linq;
 [RequireComponent(typeof(Collider))]
 public class HeroInteract : MonoBehaviour
 {
-
-
-    public Interactable CurrentInteractable {
+    public Interactable CurrentInteractable
+    {
         get
         {
             if (currentAttachState == AttachState.Attached)
                 return _currentInteractable;
-            else
-                return null;
+            return null;
         }
     }
-
-    private Interactable _currentInteractable;
-
-    private HeroMove _heroMove;
-    private HeroAwareness _heroAwareness;
+    public PlayerInput.InteractState InteractState { get { return _currentInteractState; } }
     public enum AttachState { Attaching, Attached, Detached }
-
     [HideInInspector]
     public AttachState currentAttachState = AttachState.Detached;
-    [HideInInspector]
-    public PlayerInput.InteractState currentInteractState;
 
-    private float _attachRotateSpeed = 10f;
-
+    private Interactable _currentInteractable;
+    private HeroMove _heroMove;
+    private HeroAwareness _heroAwareness;
+    private PlayerInput.InteractState _currentInteractState;
+    private const float AttachRotateSpeed = 10f;
 
     void Start()
     {
@@ -46,7 +40,6 @@ public class HeroInteract : MonoBehaviour
             AttachHeroTo(_currentInteractable);
     }
 
-
     public void ReceivePlayerInteractInput(PlayerInput.InteractState interactState)
     {
         CheckForInteractables(interactState);
@@ -55,7 +48,8 @@ public class HeroInteract : MonoBehaviour
 
     private void CheckForInteractables(PlayerInput.InteractState interactState)
     {
-        currentInteractState = interactState;
+        //Store interact state (PlayerActionPrompts uses it to know when to display the prompt)
+        _currentInteractState = interactState;
         // Interactable Detected
         if (_heroAwareness.CurrentObjectInAwareness && _heroAwareness.CurrentObjectInAwareness.gameObject.layer.Equals(LayerMask.NameToLayer("Interactable")))
         {            
@@ -119,7 +113,7 @@ public class HeroInteract : MonoBehaviour
                 currentAttachState = AttachState.Attaching;
                 _heroMove.MoveHeroTo(targetPosition, OnAttachPositionReached);
             }
-            _heroMove.RotateHeroTowards(interactable.InteractLookAtPosition - transform.position, _attachRotateSpeed);
+            _heroMove.RotateHeroTowards(interactable.InteractLookAtPosition - transform.position, AttachRotateSpeed);
         }
 
     }

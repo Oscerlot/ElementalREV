@@ -734,8 +734,6 @@ namespace InControl.iOS.Xcode
             remoteFileGuid must be the guid of the referenced file as specified in
             PBXFileReference section of the external project
 
-            TODO: what. is remoteInfo entry in PBXContainerItemProxy? Is in referenced project name or
-            referenced library name without extension?
         */
 		public void AddExternalLibraryDependency( string targetGuid, string filename, string remoteFileGuid, string projectPath,
 		                                          string remoteInfo )
