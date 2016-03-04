@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 434602}
   m_Layer: 10
-  m_Name: PlayerPivot
+  m_Name: PushPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &199018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432114}
+  m_Layer: 10
+  m_Name: PullPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &423082
 Transform:
   m_ObjectHideFlags: 1
@@ -111,7 +126,19 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 439932}
-  m_RootOrder: 4
+  m_RootOrder: 5
+--- !u!4 &432114
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -68.8, y: -40.100002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 439932}
+  m_RootOrder: 3
 --- !u!4 &434602
 Transform:
   m_ObjectHideFlags: 1
@@ -119,11 +146,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68.8, y: -40.100002, z: 0}
+  m_LocalPosition: {x: 65.1, y: -40.100002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439932}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &439932
 Transform:
   m_ObjectHideFlags: 1
@@ -137,6 +164,7 @@ Transform:
   - {fileID: 498934}
   - {fileID: 441856}
   - {fileID: 468862}
+  - {fileID: 432114}
   - {fileID: 434602}
   - {fileID: 423082}
   m_Father: {fileID: 0}
@@ -288,7 +316,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 70, y: 90, z: 70}
+  m_Size: {x: 65, y: 90, z: 65}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6597950
 BoxCollider:
@@ -313,7 +341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70539392c732d4e43ac1628251713cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPosition: {fileID: 434602}
+  objectsToActivate: []
+  pullInteractPosition: {fileID: 432114}
+  pushInteractPosition: {fileID: 434602}
   leverHandle: {fileID: 11466158}
 --- !u!114 &11466158
 MonoBehaviour:

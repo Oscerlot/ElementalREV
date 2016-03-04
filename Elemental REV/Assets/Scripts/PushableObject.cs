@@ -20,9 +20,7 @@ public class PushableObject : Interactable {
 
     void Update()
     {       
-
         GroundCheck();
-
     }
 
 
@@ -68,6 +66,11 @@ public class PushableObject : Interactable {
     {        
         beingPushed = false;
         GroundCheck(); //To keep the player from pushing an extra grid space when the pushable is not grounded
+    }
+
+    public override bool IsBeingUsed()
+    {
+        return beingPushed;
     }
 
     protected override List<Vector3> GetInteractPosition()

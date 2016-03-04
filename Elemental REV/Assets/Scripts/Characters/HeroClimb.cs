@@ -32,7 +32,6 @@ public class HeroClimb : MonoBehaviour
                 if (_playerInput.MovInDirection.magnitude > .02f)
                 {
                     _rgBody.AddForce(Vector3.up*.5f, ForceMode.VelocityChange);
-                    Debug.Log("Add force dammit");
                 }
             }
         }

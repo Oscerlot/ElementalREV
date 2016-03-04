@@ -34,7 +34,7 @@ public class HeroPullLever : MonoBehaviour
                 _animationControl.SetTrigger("PullLever");
             }
         }
-        if (_lever && !_lever.IsInUse())
+        if (_lever && !_lever.IsBeingUsed())
         {
             _heroInteract.DetachHero();
             _lever = null;

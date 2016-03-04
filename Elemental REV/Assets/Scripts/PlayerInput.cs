@@ -15,13 +15,11 @@ public class PlayerInput : MonoBehaviour
 
     public enum InteractState { Began, BeingHeld, Released, Inactive };
 
-
     void Start()
     {
         _cam = Camera.main.transform;
         _heroMovement = GetComponent<HeroMove>();
         _heroInteract = GetComponent<HeroInteract>();
-
     }
 
     void Update()
